@@ -11,8 +11,8 @@ export async  function searchProducts(){
    //--------------------------------------------------------------
    //External API
    //const data = await fetch("https://microsoftedge.github.io/Demos/json-dummy-data/64KB.json")
-   const data = await  fetch("https://mdn.github.io/learning-area/javascript/apis/fetching-data/can-store/products.json");
-    const productData = await data.json();
-    const products = JSON.stringify(productData);
+   const data = await  fetch("https://raw.githubusercontent.com/iandersonalmeida/json-data/refs/heads/main/test.json");
+    const products = await data.json();
+    //const products = JSON.stringify(productData);
     return products;
 }

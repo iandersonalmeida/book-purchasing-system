@@ -4,23 +4,25 @@ import { use } from "react"
 export function ProductDisplay({
   products,
 }:{
-  products:Promise<string>
+  products:Promise<any>
 }
 ){
     const p = use(products);
-    const obj = JSON.parse(p);
+   // const obj = JSON.parse(p);
+   
 
     
     return(
-        <>
+        <>  {/* Using Fragment to group tags */}
+        
         <h1>Product Display Page</h1>
         <div>
         <ul>
-          {obj.map((idx:any,data:any)=>{
-            return <li key={idx}>{data.name}</li>
+          {p.map((data:any)=>{
+            return <li key={data.id}>{data}</li>
           })}
         </ul> 
-        </div>
+        </div> 
 
         <div>
           
