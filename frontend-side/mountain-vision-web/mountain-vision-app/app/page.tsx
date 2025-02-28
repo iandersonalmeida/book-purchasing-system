@@ -1,6 +1,7 @@
 import Link from 'next/link'
 import { SearchButton } from './ui/buttons/search-button';
 import { LoginButton } from './ui/buttons/login-button';
+import { Input } from './ui/inputs/input';
 
 
 export default function Home() {
@@ -17,7 +18,9 @@ export default function Home() {
 
       <div className='flex justify-center mt-52'>
         <SearchButton />
-      </div>   
+      </div> 
+
+     
     </div>
   );
 }

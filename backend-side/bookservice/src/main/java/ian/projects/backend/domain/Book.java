@@ -21,6 +21,10 @@ public class Book {
 	
 	@Column
 	private String title;
+	
+	@Column
+	private String price;
+	
 
 	public int getBookCode() {
 		return bookCode;
@@ -44,6 +48,14 @@ public class Book {
 
 	public void setTitle(String title) {
 		this.title = title;
+	}
+
+	public String getPrice() {
+		return price;
+	}
+
+	public void setPrice(String price) {
+		this.price = price;
 	}
 
 }
