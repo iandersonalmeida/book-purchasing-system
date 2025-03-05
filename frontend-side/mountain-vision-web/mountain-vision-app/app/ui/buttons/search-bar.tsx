@@ -2,22 +2,23 @@
 'use client'
 
 import Link from "next/link";
-import { getProducts } from "@/app/display/page";
+import {getProducts, setSearchString } from "@/app/display/page";
 import Form from 'next/form';
 import { useState } from "react";
-import { setSearchString } from "@/app/display/page";
 
-export function SearchButton(){
+export function SearchBar(){
 
     const[text, setText] = useState('');   
 
     function handleChange(text:string){
-        setText(text);
-            
+        setText(text);            
       } 
-    
+
+          
     function handleClick(){
-        setSearchString(text);    
+       let searchString = text;
+        console.log("String assigned from SearchBar: " ,searchString);
+        setSearchString(searchString);
         getProducts();
     }    
 

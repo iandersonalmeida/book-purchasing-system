@@ -3,25 +3,24 @@ import Link from "next/link";
 import { searchProducts } from "@/lib/products";
 import { Suspense } from "react";
 import { ProductDisplay } from "../ui/displays/product-display";
+import { searchByAuthor } from "@/lib/searchByAuthor";
 
-var text:string;
+export function setSearchString(searchString:string){
+  console.log("Search String from Display ",searchString);
+}
 
 export function getProducts()
 {
-  setSearchString(text);
-  const data =  searchProducts(text);
+  const data =  searchProducts();
    return data;
 }
- 
- export function setSearchString(searchString:string){
-  text = searchString;
- }
+
 
 export default function Display()
   { 
     const data = getProducts()
     const books = data;
-    console.log("From display: ",books);
+  
 
   return(
     <>  

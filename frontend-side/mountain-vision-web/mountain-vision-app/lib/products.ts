@@ -1,7 +1,8 @@
 "use server"
 import { promises as fs } from "fs";
 
-export async  function searchProducts(text){ 
+
+export async  function searchProducts(){ 
 
 // Local file system
 //const data = await fs.readFile(process.cwd() + '/app/test.json','utf8');
@@ -9,8 +10,8 @@ export async  function searchProducts(text){
 
 //-----------------------------------------------------------------------------------------
 //Backend
-const data = fetch(`http://localhost:2141/bookservice/api/v1/books/${text}`);
-//const data = await fetch(`http://localhost:2141/bookservice/api/v1/books`);
+//const data = await fetch(`http://localhost:2141/bookservice/api/v1/books/${text}`);
+const data = await fetch(`http://localhost:2141/bookservice/api/v1/books`);
 const books = await data.json();
 
 //--------------------------------------------------------------
