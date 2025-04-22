@@ -2,9 +2,11 @@
 'use client'
 
 import Link from "next/link";
-import {getProducts, setSearchString } from "@/app/display/page";
+import Display, {getProducts} from "@/app/display/page";
 import Form from 'next/form';
 import { useState } from "react";
+import {searchByAuthor } from "@/lib/searchByAuthor";
+
 
 export function SearchBar(){
 
@@ -12,14 +14,13 @@ export function SearchBar(){
 
     function handleChange(text:string){
         setText(text);            
-      } 
-
+      }    
           
     function handleClick(){
        let searchString = text;
-        console.log("String assigned from SearchBar: " ,searchString);
-        setSearchString(searchString);
-        getProducts();
+       console.log("String assigned from SearchBar: " ,searchString);
+       let bookByAuthor =  searchByAuthor(searchString);
+      // getProducts();
     }    
 
     return(
