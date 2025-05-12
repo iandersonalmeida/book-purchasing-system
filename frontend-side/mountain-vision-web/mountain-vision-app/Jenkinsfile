@@ -1,0 +1,62 @@
+pipeline {
+    agent any
+    
+    environment {
+        // Variáveis de ambiente (caso necessário)
+        DOCKER_IMAGE = 'meu-nextjs-app'
+        PORTA = '3000'
+    }
+    
+    stages {
+        stage('Clonar Código') {
+            steps {
+                // Clonar o código do GitHub
+                git 'https://github.com/iandersonalmeida/book-purchasing-system.git'
+            }
+        }
+        
+        stage('Instalar Dependências') {
+            steps {
+                script {
+                    // Instalar dependências via npm/yarn
+                    sh 'npm install' // Ou se usar yarn, substitua por yarn install
+                }
+            }
+        }
+        
+        stage('Build Docker') {
+            steps {
+                script {
+                    // Criar a imagem Docker
+                    docker.build(DOCKER_IMAGE)
+                }
+            }
+        }
+        
+        stage('Rodar Container Docker') {
+            steps {
+                script {
+                    // Rodar o container Docker com a aplicação Next.js
+                    // Certifique-se de que a porta 3000 está mapeada corretamente
+                    sh "docker run -d -p ${PORTA}:${PORTA} ${DOCKER_IMAGE}"
+                }
+            }
+        }
+        
+        stage('Limpeza (opcional)') {
+            steps {
+                script {
+                    // Remover os containers e imagens não utilizados após o build
+                    sh "docker system prune -f"
+                }
+            }
+        }
+    }
+    
+    post {
+        always {
+            // Garantir que os containers não ficam rodando indefinidamente após o build
+            sh "docker ps -q | xargs docker stop"
+        }
+    }
+}
