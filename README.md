@@ -37,13 +37,12 @@ Here is an example of the communication between a MySQL database and a Spring Bo
 
 The application uses Spring Data JPA and follows MVC architecture. The response is returned in JSON format.
 
+## Frontend Development
+The frontend is being developed using Next.js, a React framework that enables server-side rendering and static site generation.
 
-### Homepage developed with Next.js
-![](homepage.PNG)  
-
-This homepage was developed using the Next.js framework. Next.js is defined as a React framework. Thus, from the React point of view, a component was created, rendered and displayed on the screen. 
-
-------------------------------------
+### Homepage
+The frontend has been recently rebuilt to improve design and structure. Below is a representation of the current homepage developed with Next.js:
+![](homepage.PNG) 
   
 ## Project Status
 The project is currently under development.
