@@ -2,6 +2,10 @@
 This project aims to develop a web application that addresses microservices architecture, expanding knowledge and practical experience in the fields of the software development cycle, frameworks, programming, testing and deployment.
 
 * [General info](#general-info)
+* [Technologies Used](#technologies-used)
+* [Overall Architecture](#overall-architecture)
+* [Backend Development](#backend-development)
+* [Frontend Development](#frontend-development)
 * [Development](#c)
    - [Application domain model](#application-domain-model)
    - [Microservice architecture-based version of the application](#microservice-architecture-based-version-of-the-application)
@@ -13,15 +17,26 @@ This project aims to develop a web application that addresses microservices arch
 ## General info
 The project is an application that addresses the idea of microservices, which describes components of a system that are independent or "loosely coupled". Each component has a defined responsibility and the resources it needs to function. For the development of the application's microservices, Spring Boot, MySQL for database management, the Postman tool for building HTTP requests and React/Next for the user interface are currently being used.
 
+## Technologies Used
+* Backend: Java, Spring Boot, MySQL, REST API
+* Frontend: React / Next.js
+* Infrastructure: Docker, Docker Compose
+* Others: Git, Docker Compose, REST API
+* Version Control: Git + GitHub
+
+## Overall Architecture
+![](micro-service-arch-app.PNG)
+
+## Backend Development
+
+
+
 ## Development
 
 ### Application domain model
 ![](domain-model.PNG)
 
 ---------------------------
-
-### Microservice architecture-based version of the application
-![](micro-service-arch-app.PNG)
 
 --------------------------------------------------------------
 
