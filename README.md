@@ -1,18 +1,14 @@
 # Book Purchasing System - Web Application Project
 This project aims to develop a web application that addresses microservices architecture, expanding knowledge and practical experience in the fields of the software development cycle, frameworks, programming, testing and deployment.
 
-* [General info](#general-info)
-* [Technologies Used](#technologies-used)
-* [Overall Architecture](#overall-architecture)
-* [Backend Development](#backend-development)
-* [Frontend Development](#frontend-development)
-* [Development](#c)
-   - [Application domain model](#application-domain-model)
-   - [Microservice architecture-based version of the application](#microservice-architecture-based-version-of-the-application)
-   - [Returning data from the book service](#returning-data-from-the-book-service)
-   - [Homepage developed with Next.js](#homepage-developed-with-Next.js)
-* [Project Status](#project-status)
-* [Inspiration](#inspiration)
+[General info](#general-info)
+[Technologies Used](#technologies-used)
+[Overall Architecture](#overall-architecture)
+[Application Domain Model](#application-domain-model)
+[Backend Development](#backend-development)
+[Frontend Development](#frontend-development)
+[Project Status](#project-status)
+[Inspiration](#inspiration)
 
 ## General info
 The project is an application that addresses the idea of microservices, which describes components of a system that are independent or "loosely coupled". Each component has a defined responsibility and the resources it needs to function. For the development of the application's microservices, Spring Boot, MySQL for database management, the Postman tool for building HTTP requests and React/Next for the user interface are currently being used.
@@ -21,31 +17,26 @@ The project is an application that addresses the idea of microservices, which de
 * Backend: Java, Spring Boot, MySQL, REST API
 * Frontend: React / Next.js
 * Infrastructure: Docker, Docker Compose
-* Others: Git, Docker Compose, REST API
 * Version Control: Git + GitHub
 
 ## Overall Architecture
 ![](micro-service-arch-app.PNG)
 
-## Backend Development
-
-
-
-## Development
-
-### Application domain model
+## Application Domain Model
 ![](domain-model.PNG)
 
----------------------------
-
---------------------------------------------------------------
-
-### Returning data from the book service
+## Backend Development
+Each microservice is built with Spring Boot and follows a clear separation of concerns.
+### Book Service
+* Exposes endpoints to manage books
+* Uses Spring Data JPA for database access
+* Returns JSON responses through REST API
+###  Data Fetching Example
+Here is an example of the communication between a MySQL database and a Spring Boot application that represents the Book Service:
 ![backendside-data-return](https://github.com/user-attachments/assets/a97b13bb-0830-4c29-8cfa-672763f14d36)
 
-Here is an example of communication between a MySQL database and a Spring Boot application that represents a service in the microservices architecture, in this case, a book service. I am using Spring Data JPA to access the database as well as the MVC architecture concept. Since this is a REST-based application, the service returns data in JSON format.
+The application uses Spring Data JPA and follows MVC architecture. The response is returned in JSON format.
 
------------------------------------------
 
 ### Homepage developed with Next.js
 ![](homepage.PNG)  
