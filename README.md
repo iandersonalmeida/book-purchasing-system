@@ -48,6 +48,7 @@ The frontend has been recently rebuilt to improve design and structure. Below is
 ![](homepage.PNG) 
 
 ### Demo - Responsive Interface
+Here's a quick preview of the application running on different screen sizes:
 ![Responsive Demo](./docs/responsive-interface.gif)
   
 ## Project Status
