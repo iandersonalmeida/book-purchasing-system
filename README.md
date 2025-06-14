@@ -48,7 +48,7 @@ The frontend has been recently rebuilt to improve design and structure. Below is
 ![](homepage.PNG) 
 
 ### Demo - Responsive Interface
-![Responsive Demo](./responsive-interface.gif)
+![Responsive Demo](./docs/responsive-interface.gif)
   
 ## Project Status
 The project is currently under development.
