@@ -4,13 +4,14 @@ import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
 import SearchBar from "./SearchBar";
+import LoginIcon from "./LoginIcon";
 
 export default function Menu() {
     const[open, setOpen] = useState(false);
     return (
         <div>
             {/**Icon to open */}
-            <div className="mr-10">
+            <div className="mr-10 lg:hidden">
                 <Image 
                      src="/menu-burger.png" 
                      alt="" 
@@ -50,7 +51,7 @@ export default function Menu() {
                     </div>                    
 
                     {/**Menu Links */} 
-                    <div className="flex items-center p-4 ml-3 mt-5" >
+                    <div className="flex items-center p-4 ml-3 mt-7" > 
                         <div className="flex flex-col gap-6 font-bold">
                             <Link href="/" className="">Home</Link>
                             <Link href="/" className="">About</Link>
@@ -60,6 +61,10 @@ export default function Menu() {
                     </div>
                     
 
+                </div>
+                {/**Icon to login */}
+                <div className="hidden lg:block">
+                    <LoginIcon/>
                 </div>
         </div>
     );

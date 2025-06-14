@@ -24,12 +24,12 @@ export default function Navbar() {
 
 
               {/**Bigger Screens............................................................... */}
-              <div className="hidden lg:block justify-center ">
-                <div className="font-bold flex gap-12">
+              <div className="relative hidden lg:block justify-center items-center ">
+                <div className="absolute font-bold flex gap-12 -ml-60">
                   <Link href="/" className=" hover:bg-blue-200">Home</Link>
-                  <Link href="/">About</Link>
-                  <Link href="/">Categories</Link>
-                  <Link href="/">Contact</Link>
+                  <Link href="/about" className="hover:bg-blue-200">About</Link>
+                  <Link href="/" className="hover:bg-blue-200">Categories</Link>
+                  <Link href="/contact" className="hover:bg-blue-200">Contact</Link>
                 </div>
               </div>
                {/**End of Bigger Screens ........................................................*/}  
