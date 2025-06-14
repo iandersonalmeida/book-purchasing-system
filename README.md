@@ -29,7 +29,7 @@ The project is an application that addresses the idea of microservices, which de
 Each microservice is built with Spring Boot and follows a clear separation of concerns.
 ### API Documentation 
 Interactive API documentation is available via Swagger UI. You can explore all endpoints, parameters, request/response examples, and schemas at the link below:
-![](https://iandersonalmeida.github.io/book-purchasing-system/)
+![view-swagger-api-documentation](https://iandersonalmeida.github.io/book-purchasing-system/)
 ### Book Service
 * Exposes endpoints to manage books
 * Uses Spring Data JPA for database access
