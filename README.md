@@ -20,10 +20,10 @@ The project is an application that addresses the idea of microservices, which de
 * Version Control: Git + GitHub
 
 ## Overall Architecture
-![](micro-service-arch-app.PNG)
+![](./docs/micro-service-arch-app.PNG)
 
 ## Application Domain Model
-![](domain-model.PNG)
+![](./docs/domain-model.PNG)
 
 ## Backend Development
 Each microservice is built with Spring Boot and follows a clear separation of concerns.
