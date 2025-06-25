@@ -39,8 +39,6 @@ This is a demonstration of a sample API request made using Postman.
 It showcases an example of the communication between a MySQL database and a Spring Boot application that represents the Book Service and how I structure and test HTTP requests, handle headers and parameters, and inspect API responses — a key part of my backend and API testing workflow:
 ![Postman Demo](./docs/postman-demo.gif.gif)
 
-The application uses Spring Data JPA and follows MVC architecture. The response is returned in JSON format.
-
 ## Frontend Development
 The frontend is being developed using Next.js, a React framework that enables server-side rendering and static site generation.
 
