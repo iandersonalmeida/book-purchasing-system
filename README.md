@@ -36,7 +36,7 @@ Interactive API documentation is available via Swagger UI. You can explore all e
 * Returns JSON responses through REST API
 ###  Data Fetching Example
 Here is an example of the communication between a MySQL database and a Spring Boot application that represents the Book Service:
-![backendside-data-return](https://github.com/user-attachments/assets/a97b13bb-0830-4c29-8cfa-672763f14d36)
+![](./docs/postman-demo.gif)
 
 The application uses Spring Data JPA and follows MVC architecture. The response is returned in JSON format.
 
@@ -45,7 +45,7 @@ The frontend is being developed using Next.js, a React framework that enables se
 
 ### Homepage
 The frontend has been recently rebuilt to improve design and structure. Below is a representation of the current homepage developed with Next.js:
-![](homepage.PNG) 
+![](./docs/homepage.PNG) 
 
 ### Demo - Responsive Interface
 Here's a quick preview of the application running on different screen sizes:
