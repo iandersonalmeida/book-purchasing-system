@@ -36,7 +36,7 @@ Interactive API documentation is available via Swagger UI. You can explore all e
 * Returns JSON responses through REST API
 ###  Data Fetching Example
 Here is an example of the communication between a MySQL database and a Spring Boot application that represents the Book Service:
-![Postman Demo](./docs/postman-demo.gif)
+![Postman Demo](./docs/postman-demo.gif.gif)
 
 The application uses Spring Data JPA and follows MVC architecture. The response is returned in JSON format.
 
