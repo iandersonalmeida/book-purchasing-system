@@ -46,6 +46,10 @@ The frontend is being developed using Next.js, a React framework that enables se
 ### Homepage
 The frontend has been recently rebuilt to improve design and structure. Below is a representation of the current homepage developed with Next.js:
 ![](homepage.PNG) 
+
+### Demo - Responsive Interface
+Here's a quick preview of the application running on different screen sizes:
+![Responsive Demo](./docs/responsive-interface.gif)
   
 ## Project Status
 The project is currently under development.
