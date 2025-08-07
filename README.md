@@ -23,7 +23,7 @@ The project is an application that addresses the idea of microservices, which de
 ![](./docs/micro-service-arch-app.PNG)
 
 ## Application Domain Model
-![](./docs/domain-model.PNG)
+![](./docs/data-model.PNG)
 
 ## Backend Development
 Each microservice is built with Spring Boot and follows a clear separation of concerns.
