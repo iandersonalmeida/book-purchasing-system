@@ -20,10 +20,10 @@ The project is an application that addresses the idea of microservices, which de
 * Version Control: Git + GitHub
 
 ## Overall Architecture
-![](micro-service-arch-app.PNG)
+![](./docs/micro-service-arch-app.PNG)
 
 ## Application Domain Model
-![](domain-model.PNG)
+![](./docs/domain-model.PNG)
 
 ## Backend Development
 Each microservice is built with Spring Boot and follows a clear separation of concerns.
@@ -35,17 +35,16 @@ Interactive API documentation is available via Swagger UI. You can explore all e
 * Uses Spring Data JPA for database access
 * Returns JSON responses through REST API
 ###  Data Fetching Example
-Here is an example of the communication between a MySQL database and a Spring Boot application that represents the Book Service:
-![backendside-data-return](https://github.com/user-attachments/assets/a97b13bb-0830-4c29-8cfa-672763f14d36)
-
-The application uses Spring Data JPA and follows MVC architecture. The response is returned in JSON format.
+This is a demonstration of a sample API request made using Postman.  
+It showcases an example of the communication between a MySQL database and a Spring Boot application that represents the Book Service and how I structure and test HTTP requests, handle headers and parameters, and inspect API responses — a key part of my backend and API testing workflow:
+![Postman Demo](./docs/postman-demo.gif.gif)
 
 ## Frontend Development
 The frontend is being developed using Next.js, a React framework that enables server-side rendering and static site generation.
 
 ### Homepage
 The frontend has been recently rebuilt to improve design and structure. Below is a representation of the current homepage developed with Next.js:
-![](homepage.PNG) 
+![](./docs/homepage.PNG) 
 
 ### Demo - Responsive Interface
 Here's a quick preview of the application running on different screen sizes:
@@ -55,5 +54,15 @@ Here's a quick preview of the application running on different screen sizes:
 The project is currently under development.
 
 ## Inspiration
-This application is based on the book: Spring Microservices in Action, and Spring Framework Documentation.
+This project was inspired by the following books and official documentation sources:
+
+- Spring Microservices in Action
+- React in Action
+- Spring Framework Documentation
+- Spring Boot Documentation
+- React Documentation
+- Next.js Documentation
+
+
+
 
