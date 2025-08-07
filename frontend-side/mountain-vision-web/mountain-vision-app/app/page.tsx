@@ -1,10 +1,16 @@
+'use client'
+
 import Link from 'next/link'
 import { SearchBar } from './ui/buttons/search-bar';
 import { LoginButton } from './ui/buttons/login-button';
 import { Input } from './ui/inputs/input';
+import { useState, useEffect } from 'react';
 
 
 export default function Home() {
+
+ 
+
   return (
     <div>
 
@@ -20,7 +26,6 @@ export default function Home() {
         
       </div> 
 
-     
     </div>
   );
 }
