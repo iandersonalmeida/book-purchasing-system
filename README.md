@@ -54,5 +54,5 @@ Here's a quick preview of the application running on different screen sizes:
 The project is currently under development.
 
 ## Inspiration
-This application is based on the book: Spring Microservices in Action, and Spring Framework Documentation.
+This application is based on the books: Spring Microservices in Action, React in Action, Next/React Documentation and Spring Framework Documentation.
 
