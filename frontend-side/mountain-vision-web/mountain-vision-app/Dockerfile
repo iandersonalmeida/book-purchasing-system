@@ -1,27 +1,12 @@
-# Usa a imagem oficial do Node.js
-FROM node:18
-
-# Instala o pnpm globalmente
-RUN npm install -g pnpm
-
-# Define o diretório de trabalho dentro do container
+FROM node:20 AS build
 WORKDIR /app
-
-# Copia os arquivos de dependências
-COPY package.json pnpm-lock.yaml ./
-
-# Instala as dependências
-RUN pnpm install
-
-# Copia o restante da aplicação
+COPY package*.json ./
+RUN npm install
 COPY . .
+RUN npm run build
 
-# Corrige permissões
-RUN chmod -R 755 /app
-
-# Expõe a porta padrão do Next.js
+FROM node:20
+WORKDIR /app
+COPY --from=build /app ./
 EXPOSE 3000
-
-# Comando para rodar o servidor de desenvolvimento
-CMD ["node_modules/.bin/next", "dev"]
-
+CMD ["npm", "start"]

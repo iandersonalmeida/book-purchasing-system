@@ -1,4 +1,7 @@
+'use client'
+
 import Image from "next/image";
+import {useEffect, useState} from "react";
 //Type definition
 type ImageObject = {
     id:number;
@@ -23,11 +26,26 @@ const images:ImageObject[] = [
 
 //Create a component
 export default function ImageSlider(){
+    //State to define o index for each image
+    const[index, setIndex] = useState(0);
+    useEffect(
+        () =>{
+            const id = setInterval(() => {
+                setIndex((i) => (i+1)%images.length);
+            },5000);
+
+            return () => clearInterval(id);
+        },[images.length]);
 
     //Return images
     return(
         <>  
         <h1>Image Slider</h1>
+         <div className="relative overflow-hidden rounded-xl">
+             Container to hold images
+             <p>Current index: {index}</p>
+
+         </div>
         <Image 
         src="/img1.jpg"
         alt="image"

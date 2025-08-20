@@ -1,0 +1,47 @@
+services:
+  mysql:
+    image: mysql:8.0
+    container_name: mysql_db
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: bookservicedb
+      MYSQL_USER: user
+      MYSQL_PASSWORD: pass
+    ports:
+      - "3306:3306"
+    volumes:
+      - db_data:/var/lib/mysql
+      - ./db/init.sql:/docker-entrypoint-initdb.d/init.sql
+
+  configurationserver:
+    build: C:/Users/Ian/Desktop/book-purchasing-system/backend-side/configurationserver
+    container_name: config_server
+    restart: always
+    ports:
+      - "8888:8888"
+    depends_on:
+      - mysql
+
+  bookservice:
+    build: C:/Users/Ian/Desktop/book-purchasing-system/backend-side/bookservice
+    container_name: book_service
+    restart: always
+    ports:
+      - "8081:8081"
+    depends_on:
+      - configurationserver
+
+  frontend:
+    build: C:/Users/Ian/Desktop/book-purchasing-system/frontend-side/mountain-vision-web/mountain-vision-app
+    container_name: next_frontend
+    restart: always
+    ports:
+      - "3000:3000"
+    environment:
+      NEXT_PUBLIC_API_URL: http://localhost:8081
+    depends_on:
+      - bookservice
+
+volumes:
+  db_data:
