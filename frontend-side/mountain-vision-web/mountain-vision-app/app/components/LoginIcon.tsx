@@ -9,8 +9,8 @@ export default function LoginIcon() {
                 alt="" 
                 width={25} 
                 height={25} 
-                className="cursor-pointer group-hover:bg-blue-200 rounded-md"/>       
-                <span className="absolute -top-2 text-black -right-4 font-sans text-lg font-light w-5 h-5 flex items-center justify-center">0</span>        
+                className="cursor-pointer group-hover:bg-blue-200 rounded-md mr-2"/>
+                <span className="absolute -top-2 text-black -right-4 font-sans text-lg font-light  h-5 flex items-center justify-center"></span>
             </Link>
         </div>
     );

@@ -4,6 +4,7 @@ import "./globals.css";
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
 import ImageSlider from "./components/ImageSlider";
+import LearningComponent from "@/app/components/LearningComponent";
 
 
 const geistSans = Geist({

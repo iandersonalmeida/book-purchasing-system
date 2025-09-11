@@ -24,35 +24,116 @@ const images:ImageObject[] = [
     }    
 ];
 
-//Create a component
+/*
+Create a component.
+Since other functions will not be declared, this module just exports the ImageSlider function using 'export default'.
+*/
 export default function ImageSlider(){
-    //State to define o index for each image
+
+      /*
+      According to the idea of array destructuring, useState returns the initial value of a state variable
+      and a function to update this value.
+
+      A simple demonstration of this idea could be as follows:
+
+       function useState(value){
+       function updateValue(){
+       return value+1;
+     }
+     return[value, updateValue];
+      }
+
+     const[x, setX] = useState(0);
+     console.log(x); x = 0
+     z = setX(x);
+     console.log(z); z = 1
+     The array on the right side of the last expression would represent the useState function,
+     returning a variable and a function that sets the variable's new value.
+     */
     const[index, setIndex] = useState(0);
+
+     /*
+     useEffect is a function that runs when the component mounts or is updated or removed from DOM.
+     An Effect serves to connect an external system with the component.
+     The useEffect function accepts a function that describes the effect to be performed and returns a cleanup function.
+     */
     useEffect(
+          /*
+          arrow function which can also be called anonymous function evaluates an expression and returns the result.
+          In this case, void is returned, meaning nothing is returned.
+          */
         () =>{
-            const id = setInterval(() => {
+            /*
+            setInterval isn't part of React, so this function is considered an external system that must connect to the component
+            when it appears on the screen. setInterval returns a Timeout object that is used to cancel the interval.
+            */
+            const id = setInterval(
+                //Anonymous function called every three seconds.
+                () => {
+                //setIndex is called and updates the component's state, triggering a new render.
                 setIndex((i) => (i+1)%images.length);
-            },5000);
-
+            },3000);
+            /*
+            The result of the anonymous function is void since clearInterval does not return anything,
+            but just cancels what was established by setInterval.
+            */
             return () => clearInterval(id);
-        },[images.length]);
+        },[index]);
 
-    //Return images
+     /*
+     The value of the expression returned by the ImageSlider function is a JavaScript object
+     that acts as a container for other objects or children that are also created with React.createElement().
+     */
     return(
-        <>  
-        <h1>Image Slider</h1>
-         <div className="relative overflow-hidden rounded-xl">
-             Container to hold images
-             <p>Current index: {index}</p>
+          /*
+          This div is a simple JavaScript object created by React.createElement()
+          and becomes the object that should contain other objects or children also created with React.createElement().
+           Just as a JavaScript function can only return multiple objects if placed inside an array,
+           in the case of React, the function can only return multiple objects inside a container,
+          which is represented here by this div.
 
-         </div>
-        <Image 
-        src="/img1.jpg"
-        alt="image"
-        width={450}
-        height={450}
-        />
-               
-        </>
+          The Tailwind CSS:
+          bg-sky-700 -> This is a class that sets the div's background to a darker shade of blue.
+
+          flex -> This class defines the div as a flex container with one dimension for flex children.
+          The default direction is horizontal which is also the main axis.
+
+          items-center -> is a property that defines the position of items along the cross axis.
+          Since the default direction of the flex property is horizontal, the items-center property is applied vertically.
+
+          justify-center -> This property is applied along the main axis. The position of items can be set along the main axis.
+
+          w-full -> Fills the entire width of the parent container's viewport.
+
+          relative and absolute -> These properties indicate that an element that is defined as absolute
+          should move relative to a parent container.
+
+          transition-opacity and duration-100 -> Indicate the transition and duration of the animations.
+
+          overflow -> Overflow content is clipped at the element's padding box.
+                 */
+        <div className="bg-sky-700 flex items-center justify-center w-full h-screen relative overflow-hidden ">
+
+            {/*
+            The map function takes an array of images and returns a new array of JSX nodes.
+            Each node has a key that is represented by the id property.
+            The image only becomes visible when the condition is true in ${currentIndex === index ? "opacity-100" : "opacity-0"}.
+            */}
+             {images.map((image, currentIndex) => (
+                <div
+                key={image.id}
+                className={` absolute text-white text-2xl w-full h-screen flex items-center justify-center
+                        transition-opacity duration-1000
+                        ${currentIndex === index ? "opacity-100" : "opacity-0"}
+                           `}
+                           >
+                           <Image
+                             src={image.img}
+                             alt="image"
+                             fill
+                             className="object-cover rounded-lg"/>
+                           </div>
+                       ))}
+            </div>
     )
 }
