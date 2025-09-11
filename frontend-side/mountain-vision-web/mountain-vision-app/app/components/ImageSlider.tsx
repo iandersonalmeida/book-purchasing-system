@@ -131,7 +131,7 @@ export default function ImageSlider(){
                              src={image.img}
                              alt="image"
                              fill
-                             className="object-cover rounded-lg"/>
+                             className="object-cover"/>
                            </div>
                        ))}
             </div>
