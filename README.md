@@ -49,6 +49,11 @@ The frontend has been recently rebuilt to improve design and structure. Below is
 ### Demo - Responsive Interface
 Here's a quick preview of the application running on different screen sizes:
 ![Responsive Demo](./docs/responsive-interface.gif)
+
+### Image Transition Component
+I’ve implemented a component that performs smooth image transitions using Next.js, React, and TypeScript.
+![Image Transition](./docs/image-transition-component.gif)
+
   
 ## Project Status
 The project is currently under development.
