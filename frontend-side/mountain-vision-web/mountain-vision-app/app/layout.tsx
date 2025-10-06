@@ -4,7 +4,7 @@ import "./globals.css";
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
 import ImageSlider from "./components/ImageSlider";
-import LearningComponent from "@/app/components/LearningComponent";
+import ResponsiveComponent from "./for-learning/ResponsiveComponent";
 
 
 const geistSans = Geist({
@@ -34,7 +34,7 @@ export default function RootLayout({
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >        
         <Navbar/>
-        <ImageSlider/>
+        <ImageSlider />
         {children}
         <Footer/>
       </body>
