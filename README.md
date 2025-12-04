@@ -52,7 +52,7 @@ Here's a quick preview of the application running on different screen sizes:
 
 ### Image Transition Component
 I’ve implemented a component that performs smooth image transitions using Next.js, React, and TypeScript.
-![Image Transition](./docs/image-transition.gif)
+![Image Transition](./docs/image-transition-updated.gif)
 
   
 ## Project Status
