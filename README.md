@@ -44,15 +44,15 @@ The frontend is being developed using Next.js, a React framework that enables se
 
 ### Homepage
 The frontend has been recently rebuilt to improve design and structure. Below is a representation of the current homepage developed with Next.js:
-![](./docs/homepage.PNG) 
+![](./docs/homepage-1.PNG) 
 
 ### Demo - Responsive Interface
 Here's a quick preview of the application running on different screen sizes:
-![Responsive Demo](./docs/responsive-interface.gif)
+![Responsive Demo](./docs/responsive-design-sample.gif)
 
 ### Image Transition Component
 I’ve implemented a component that performs smooth image transitions using Next.js, React, and TypeScript.
-![Image Transition](./docs/image-transition-component.gif)
+![Image Transition](./docs/image-transition.gif)
 
   
 ## Project Status
