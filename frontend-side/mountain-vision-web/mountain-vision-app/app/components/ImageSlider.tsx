@@ -23,7 +23,7 @@ const images:ImageObject[] = [
         img: "/img2.jpg",
         text: (
             <>
-                "All truths are easy to understand<br/>once they are discovered;<br/>the point is to discover them." (Galileo Galile)"
+                "All truths are easy to understand<br/>once they are discovered;<br/>the point is to discover them." (Galileo Galile)
             </>
         ),
         color: "text-black"
@@ -33,7 +33,7 @@ const images:ImageObject[] = [
         img: "/img3.jpg",
           text: (
             <>
-                "The important thing is not to stop questioning.<br/>Curiosity has its own reason for existing." (Albert Einstein)" 
+                "The important thing is not to stop questioning.<br/>Curiosity has its own reason for existing." (Albert Einstein)
             </>
         ),
         color: "text-gray-500"
@@ -103,7 +103,7 @@ export default function ImageSlider(){
         () => {
             const id = setInterval(() => {
                 setShowText(true);                                
-            }, 6000);
+            }, 5000);
 
             return () => clearInterval(id);
 

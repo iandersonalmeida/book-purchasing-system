@@ -5,6 +5,7 @@ import Link from "next/link";
 import { useState } from "react";
 import SearchBar from "./SearchBar";
 import LoginIcon from "./LoginIcon";
+import MyAccount from "./MyAccount";
 
 export default function Menu() {
     const[open, setOpen] = useState(false);
@@ -56,8 +57,14 @@ export default function Menu() {
                             <Link href="/" className="">Home</Link>
                             <Link href="/" className="">About</Link>
                             <Link href="/" className="">Categories</Link>
-                            <Link href="/" className="">Contact</Link>
+                            <Link href="/" className="">Contact</Link>  
+                            <div className="mt-10">
+                                <MyAccount />
+                            </div>
+                                                         
                         </div>
+                      
+                        
                     </div>
                     
 

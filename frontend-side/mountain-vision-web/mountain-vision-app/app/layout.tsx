@@ -36,7 +36,7 @@ export default function RootLayout({
         <Navbar/>
         <ImageSlider />
         {children}
-        <Footer/>
+        
       </body>
     </html>
   );
