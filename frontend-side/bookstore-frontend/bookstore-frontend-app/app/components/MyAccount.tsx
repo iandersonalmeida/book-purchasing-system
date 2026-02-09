@@ -1,6 +1,7 @@
 "use client"
 
 import Image from "next/image";
+import Link from "next/link";
 // buscar o efeito no click lento...
 
 import { useState } from "react"
@@ -8,7 +9,7 @@ import { useState } from "react"
 export default function MyAccount(){
     const[show, setShow] = useState(false);
     return(
-        <div className="bg-gray-300 p-1" >My Account
+        <div className="p-1" >My Account
 
             <div className="flex flex-col justify-center items-end">
                  {/* plus icon */}
@@ -25,8 +26,18 @@ export default function MyAccount(){
 
             {/* sliding */}
             <div className={`transform transition-transform ${show ? "translate-y-0 duration-1000 ease-in-out" : "hidden"}`}>
-                <h3 className="text-sm/10">Log in</h3>
-                   <h3 className="text-sm/10">Create account</h3>
+                <Link
+                 href="/login"   
+                >
+                    <h3 className="text-sm/10">Log in</h3>
+                </Link>
+                
+                <Link
+                href="/create-account"
+                >
+                    <h3 className="text-sm/10">Create account</h3>
+                </Link>
+                 
 
                 {/* minus icon */}
                 <div className=" ml-64">
