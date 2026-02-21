@@ -1,8 +1,8 @@
 {
   "openapi": "3.0.2",
   "info": {
-    "title": "Mountain Vision API",
-    "description": "Microservice application for purchasing digital or printed books",
+    "title": "Bookstore Website Demo",
+    "description": "Microservice application API for purchasing books",
     "version": "1.0.0"
   },
   "servers": [
