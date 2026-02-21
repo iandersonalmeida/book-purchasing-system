@@ -2,7 +2,7 @@
   "openapi": "3.0.2",
   "info": {
     "title": "Bookstore Website Demo",
-    "description": "Microservice application API for purchasing books",
+    "description": "RESTful API for a Microservice-Based Bookstore Website Demo",
     "version": "1.0.0"
   },
   "servers": [
