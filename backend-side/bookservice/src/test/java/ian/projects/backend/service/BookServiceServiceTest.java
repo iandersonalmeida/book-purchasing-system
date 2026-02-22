@@ -30,11 +30,7 @@ public class BookServiceServiceTest {
 		
 		Book book1 = new Book();
 		book1.setTitle("The Human Condition");
-		book1.setAuthor("Hannah Arendt");
-		
-		Book book2 = new Book();
-		book2.setTitle("Organo");
-		book2.setAuthor("Aristotle");
+		book1.setAuthor("Hannah Arendt");		
 		
 		when(bookServiceRepository.findByAuthor("Hannah Arendt")).thenReturn(Collections.singletonList(book1));
 		
