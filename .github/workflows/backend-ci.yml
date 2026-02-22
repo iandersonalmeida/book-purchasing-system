@@ -24,6 +24,5 @@ jobs:
           java-version: 17
 
       - name: Build and test bookservice
-        run: |
-          cd backend/bookservice
-          mvn clean verify
+        working-directory: backend-side/bookservice
+        run: mvn clean verify
