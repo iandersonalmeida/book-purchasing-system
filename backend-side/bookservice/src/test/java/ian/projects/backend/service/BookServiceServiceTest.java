@@ -26,11 +26,15 @@ public class BookServiceServiceTest {
 	
 	
 	@Test
-	void shouldReturnBookByAuthor() {
+	void testGetBooksByAuthor() {
 		
 		Book book1 = new Book();
 		book1.setTitle("The Human Condition");
-		book1.setAuthor("Hannah Arendt");		
+		book1.setAuthor("Hannah Arendt");
+		
+		Book book2 = new Book();
+		book2.setTitle("The Organon");
+		book2.setAuthor("Aristotle");
 		
 		when(bookServiceRepository.findByAuthor("Hannah Arendt")).thenReturn(Collections.singletonList(book1));
 		
