@@ -30,12 +30,8 @@ public class BookServiceServiceTest {
 	
 	
 	@Test
-	void testGetBooksByAuthor() {
-		
-		Book book2 = new Book();
-		book2.setTitle("The Organon");
-		book2.setAuthor("Aristotle");
-		
+	void testGetBooksByAuthor() {		
+				
 		//Given
 		Book book1 = new Book();
 		book1.setTitle("The Human Condition");
