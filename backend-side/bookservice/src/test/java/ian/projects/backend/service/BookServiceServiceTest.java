@@ -30,7 +30,6 @@ public class BookServiceServiceTest {
 	
 	
 	@Test
-<<<<<<< HEAD
 	void testGetBooksByAuthor() {		
 				
 		//Given
@@ -45,26 +44,6 @@ public class BookServiceServiceTest {
 		//Then
 		assertEquals(1, result.size());		
 		assertEquals("Hannah Arendt", result.get(0).getAuthor());		
-=======
-	void testGetBooksByAuthor() {
-		
-		Book book1 = new Book();
-		book1.setTitle("The Human Condition");
-		book1.setAuthor("Hannah Arendt");
-		
-		Book book2 = new Book();
-		book2.setTitle("The Organon");
-		book2.setAuthor("Aristotle");
-		
-		when(bookServiceRepository.findByAuthor("Hannah Arendt")).thenReturn(Collections.singletonList(book1));
-		
-		List<Book> result = bookServiceService.getBooksByAuthor("Hannah Arendt");
-		
-		assertEquals(1, result.size());
-		
-		assertEquals("Hannah Arendt", result.get(0).getAuthor());
-		
->>>>>>> develop
 		verify(bookServiceRepository, times(1)).findByAuthor("Hannah Arendt");		
 	}
 
