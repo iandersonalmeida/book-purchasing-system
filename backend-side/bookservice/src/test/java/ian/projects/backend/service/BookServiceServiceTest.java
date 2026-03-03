@@ -18,37 +18,41 @@ import static org.mockito.Mockito.*;
 import java.util.Collections;
 import java.util.List;
 
-
+/**
+ * Unit test class for BookService.
+ * 
+ * This class tests the business logic of BookService using Mockito to mock the
+ * BookRepository dependency.
+ */
 @ExtendWith(MockitoExtension.class)
 public class BookServiceServiceTest {
-	
+
 	@Mock
 	private BookServiceRepository bookServiceRepository;
-	
+
 	@InjectMocks
 	private BookServiceService bookServiceService;
-	
-	
+
 	@Test
 	void testGetBooksByAuthor() {
-		
+
 		Book book1 = new Book();
 		book1.setTitle("The Human Condition");
 		book1.setAuthor("Hannah Arendt");
-		
+
 		Book book2 = new Book();
 		book2.setTitle("The Organon");
 		book2.setAuthor("Aristotle");
-		
+
 		when(bookServiceRepository.findByAuthor("Hannah Arendt")).thenReturn(Collections.singletonList(book1));
-		
+
 		List<Book> result = bookServiceService.getBooksByAuthor("Hannah Arendt");
-		
+
 		assertEquals(1, result.size());
-		
+
 		assertEquals("Hannah Arendt", result.get(0).getAuthor());
-		
-		verify(bookServiceRepository, times(1)).findByAuthor("Hannah Arendt");		
+
+		verify(bookServiceRepository, times(1)).findByAuthor("Hannah Arendt");
 	}
 
 }

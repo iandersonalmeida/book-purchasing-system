@@ -14,26 +14,58 @@ import org.springframework.web.bind.annotation.RestController;
 import ian.projects.backend.domain.Book;
 import ian.projects.backend.service.BookServiceService;
 
+/**
+ * REST controller for handling HTTP requests related to books. Exposes
+ * endpoints for retrieving books from the system.
+ */
 @RestController
 @RequestMapping(value = "/bookservice/api/v1")
 @CrossOrigin(origins = "http://localhost:3000")
 public class BookServiceController {
-	
-private static final Logger log = LoggerFactory.getLogger(BookServiceController.class);
-	
-	@Autowired
+
+	private static final Logger log = LoggerFactory.getLogger(BookServiceController.class);
+
+	/**
+	 * Service layer used to process business logic for books.
+	 */
 	private BookServiceService bookServiceService;
-	
+
+	/**
+	 * Constructs a BookController with the given BookService. The BookService is
+	 * automatically injected by Spring.
+	 *
+	 * @param bookService the service responsible for book operations
+	 */
+	@Autowired
+	public BookServiceController(BookServiceService bookServiceService) {
+		this.bookServiceService = bookServiceService;
+	}
+
+	/**
+	 * Retrieves books written by a specific author.
+	 *
+	 * Example request: GET /api/books?author=John
+	 *
+	 * @param author the name of the author
+	 * @return a list of Book objects written by the specified author
+	 */
 	@GetMapping("/books/{author}")
 	public List<Book> getBooksBasedOnAuthor(@PathVariable("author") String author) {
-		
-		 log.info("author: "+author);
-		
-		return bookServiceService.getBooksByAuthor(author);				
+
+		log.info("author: " + author);
+
+		return bookServiceService.getBooksByAuthor(author);
 	}
-	
+
+	/**
+	 * Retrieves all books from the system.
+	 *
+	 * Example request: GET /api/books
+	 *
+	 * @return a list of all Book objects
+	 */
 	@GetMapping("/books")
-	public List<Book> getAllBooks(){
+	public List<Book> getAllBooks() {
 		return bookServiceService.getAllBooks();
 	}
 
