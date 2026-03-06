@@ -3,6 +3,7 @@ This project aims to develop a web application that addresses microservices arch
 
 - [General info](#general-info)
 - [Technologies Used](#technologies-used)
+- [Project Management](#project-management)
 - [Overall Architecture](#overall-architecture)
 - [Application Domain Model](#application-domain-model)
 - [Backend Development](#backend-development)
@@ -18,6 +19,12 @@ The project is an application that addresses the idea of microservices, which de
 * Frontend: React / Next.js
 * Infrastructure: Docker, Docker Compose
 * Version Control: Git + GitHub
+
+## Project Management
+
+I manage the development of this project using **GitHub Projects** (Scrum style):
+
+[View Project Board](https://github.com/users/iandersonalmeida/projects/16)
 
 ## Overall Architecture
 ![](./docs/micro-service-arch-app.PNG)
