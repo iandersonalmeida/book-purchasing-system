@@ -1,5 +1,7 @@
 package ian.projects.backend.domain;
 
+import java.math.BigDecimal;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -21,7 +23,7 @@ public class Book {
 	 */
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	private int bookCode;
+	private Long bookCode;
 
 	/**
 	 * Author of the book.
@@ -39,13 +41,13 @@ public class Book {
 	 * Price of the book.
 	 */
 	@Column
-	private String price;
+	private BigDecimal price;
 
-	public int getBookCode() {
+	public Long getBookCode() {
 		return bookCode;
 	}
 
-	public void setBookCode(int bookCode) {
+	public void setBookCode(Long bookCode) {
 		this.bookCode = bookCode;
 	}
 
@@ -65,11 +67,11 @@ public class Book {
 		this.title = title;
 	}
 
-	public String getPrice() {
+	public BigDecimal getPrice() {
 		return price;
 	}
 
-	public void setPrice(String price) {
+	public void setPrice(BigDecimal price) {
 		this.price = price;
 	}
 

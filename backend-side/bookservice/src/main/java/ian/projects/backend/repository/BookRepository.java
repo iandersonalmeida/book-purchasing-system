@@ -11,7 +11,7 @@ import ian.projects.backend.domain.Book;
  * Repository interface for managing Book entities in the database. Provides
  * CRUD operations via JpaRepository and custom queries.
  */
-public interface BookServiceRepository extends JpaRepository<Book, Integer> {
+public interface BookRepository extends JpaRepository<Book, Long> {
 
 	/**
 	 * Finds all books written by the specified author.
