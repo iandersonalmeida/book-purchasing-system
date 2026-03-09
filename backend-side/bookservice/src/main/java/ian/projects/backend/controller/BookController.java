@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import ian.projects.backend.domain.Book;
-import ian.projects.backend.service.BookServiceService;
+import ian.projects.backend.service.BookServiceImpl;
 
 /**
  * REST controller for handling HTTP requests related to books. Exposes
@@ -21,14 +21,14 @@ import ian.projects.backend.service.BookServiceService;
 @RestController
 @RequestMapping(value = "/bookservice/api/v1")
 @CrossOrigin(origins = "http://localhost:3000")
-public class BookServiceController {
+public class BookController {
 
-	private static final Logger log = LoggerFactory.getLogger(BookServiceController.class);
+	private static final Logger log = LoggerFactory.getLogger(BookController.class);
 
 	/**
 	 * Service layer used to process business logic for books.
 	 */
-	private BookServiceService bookServiceService;
+	private BookServiceImpl bookService;
 
 	/**
 	 * Constructs a BookController with the given BookService. The BookService is
@@ -37,24 +37,8 @@ public class BookServiceController {
 	 * @param bookService the service responsible for book operations
 	 */
 	@Autowired
-	public BookServiceController(BookServiceService bookServiceService) {
-		this.bookServiceService = bookServiceService;
-	}
-
-	/**
-	 * Retrieves books written by a specific author.
-	 *
-	 * Example request: GET /api/books?author=John
-	 *
-	 * @param author the name of the author
-	 * @return a list of Book objects written by the specified author
-	 */
-	@GetMapping("/books/{author}")
-	public List<Book> getBooksBasedOnAuthor(@PathVariable("author") String author) {
-
-		log.info("author: " + author);
-
-		return bookServiceService.getBooksByAuthor(author);
+	public BookController(BookServiceImpl bookService) {
+		this.bookService = bookService;
 	}
 
 	/**
@@ -66,7 +50,7 @@ public class BookServiceController {
 	 */
 	@GetMapping("/books")
 	public List<Book> getAllBooks() {
-		return bookServiceService.getAllBooks();
+		return bookService.getAllBooks();
 	}
 
 }
