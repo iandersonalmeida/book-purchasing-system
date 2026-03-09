@@ -28,7 +28,11 @@ public class BookController {
 	/**
 	 * Service layer used to process business logic for books.
 	 */
+<<<<<<< HEAD
 	private BookServiceImpl bookService;
+=======
+	private BookServiceImpl bookServiceService;
+>>>>>>> 9ae297fd5112853881f338b94f8897cbed165071
 
 	/**
 	 * Constructs a BookController with the given BookService. The BookService is
@@ -37,10 +41,18 @@ public class BookController {
 	 * @param bookService the service responsible for book operations
 	 */
 	@Autowired
+<<<<<<< HEAD
 	public BookController(BookServiceImpl bookService) {
 		this.bookService = bookService;
 	}
 
+=======
+	public BookController(BookServiceImpl bookServiceService) {
+		this.bookServiceService = bookServiceService;
+	}
+
+	
+>>>>>>> 9ae297fd5112853881f338b94f8897cbed165071
 	/**
 	 * Retrieves all books from the system.
 	 *

@@ -22,7 +22,11 @@ import java.util.List;
 import java.util.Optional;
 
 /**
+<<<<<<< HEAD
  * Unit test class for BookService.
+=======
+ * Unit test class for BookServiceService.
+>>>>>>> 9ae297fd5112853881f338b94f8897cbed165071
  * 
  * This class tests the business logic of BookService using Mockito to mock the
  * BookRepository dependency.
@@ -35,7 +39,11 @@ public class BookServiceTest {
 
 	/**
 	 * @InjectMocks creates a real instance of the class to be tested and injects
+<<<<<<< HEAD
 	 *              mocks created with @Mock.
+=======
+	 * mocks created with @Mock.
+>>>>>>> 9ae297fd5112853881f338b94f8897cbed165071
 	 */
 	@InjectMocks
 	private BookServiceImpl bookService;
@@ -57,5 +65,11 @@ public class BookServiceTest {
 
 		// then
 		assertEquals("The Human Conditon", result.getTitle());
+<<<<<<< HEAD
 	}
+=======
+
+	}
+
+>>>>>>> 9ae297fd5112853881f338b94f8897cbed165071
 }
