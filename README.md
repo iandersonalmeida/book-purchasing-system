@@ -17,7 +17,6 @@ The project is an application that addresses the idea of microservices, which de
 ## Technologies Used
 * Backend: Java, Spring Boot, MySQL, REST API
 * Frontend: React / Next.js
-* Infrastructure: Docker, Docker Compose
 * Version Control: Git + GitHub
 
 ## Project Management
