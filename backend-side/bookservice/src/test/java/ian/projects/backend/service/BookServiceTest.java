@@ -12,24 +12,15 @@ import ian.projects.backend.domain.Book;
 import ian.projects.backend.repository.BookRepository;
 import ian.projects.backend.service.BookServiceImpl;
 
-import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.*;
 
 import java.math.BigDecimal;
-import java.util.Collections;
-import java.util.List;
 import java.util.Optional;
 
 /**
-<<<<<<< HEAD
- * Unit test class for BookService.
-=======
- * Unit test class for BookServiceService.
->>>>>>> 9ae297fd5112853881f338b94f8897cbed165071
- * 
- * This class tests the business logic of BookService using Mockito to mock the
- * BookRepository dependency.
+ * Unit test class for BookService. This class tests the business logic of
+ * BookService using Mockito to mock the BookRepository dependency.
  */
 @ExtendWith(MockitoExtension.class)
 public class BookServiceTest {
@@ -39,11 +30,8 @@ public class BookServiceTest {
 
 	/**
 	 * @InjectMocks creates a real instance of the class to be tested and injects
-<<<<<<< HEAD
+	 * 
 	 *              mocks created with @Mock.
-=======
-	 * mocks created with @Mock.
->>>>>>> 9ae297fd5112853881f338b94f8897cbed165071
 	 */
 	@InjectMocks
 	private BookServiceImpl bookService;
@@ -61,15 +49,10 @@ public class BookServiceTest {
 		when(bookRepository.findById(1L)).thenReturn(Optional.of(book));
 
 		// when
-		Book result = bookService.getBookByCodeBook(1L);
+		Book result = bookService.findBookByCodeBook(book.getBookCode());
 
 		// then
 		assertEquals("The Human Conditon", result.getTitle());
-<<<<<<< HEAD
-	}
-=======
-
 	}
 
->>>>>>> 9ae297fd5112853881f338b94f8897cbed165071
 }

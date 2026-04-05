@@ -19,7 +19,7 @@ import ian.projects.backend.service.BookServiceImpl;
  * endpoints for retrieving books from the system.
  */
 @RestController
-@RequestMapping(value = "/bookservice/api/v1")
+@RequestMapping(value = "/bookservice/api")
 @CrossOrigin(origins = "http://localhost:3000")
 public class BookController {
 
@@ -28,31 +28,21 @@ public class BookController {
 	/**
 	 * Service layer used to process business logic for books.
 	 */
-<<<<<<< HEAD
+
 	private BookServiceImpl bookService;
-=======
-	private BookServiceImpl bookServiceService;
->>>>>>> 9ae297fd5112853881f338b94f8897cbed165071
 
 	/**
 	 * Constructs a BookController with the given BookService. The BookService is
-	 * automatically injected by Spring.
+	 * injected by constructor.
 	 *
 	 * @param bookService the service responsible for book operations
 	 */
+	
 	@Autowired
-<<<<<<< HEAD
 	public BookController(BookServiceImpl bookService) {
 		this.bookService = bookService;
 	}
 
-=======
-	public BookController(BookServiceImpl bookServiceService) {
-		this.bookServiceService = bookServiceService;
-	}
-
-	
->>>>>>> 9ae297fd5112853881f338b94f8897cbed165071
 	/**
 	 * Retrieves all books from the system.
 	 *
@@ -63,6 +53,11 @@ public class BookController {
 	@GetMapping("/books")
 	public List<Book> getAllBooks() {
 		return bookService.getAllBooks();
+	}
+	
+	@GetMapping("/books/{book-code}")
+	public Book getBookByCodeBook(Long id){
+		return bookService.findBookByCodeBook(id);
 	}
 
 }

@@ -15,5 +15,5 @@ public interface BookService {
 	 * @throws RuntimeException if the book is not found
 	 */
 
-	Book getBookByCodeBook(Long id);
+	Book findBookByCodeBook(Long id);
 }
