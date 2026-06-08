@@ -40,11 +40,6 @@ Through strategic modeling, the Catalog Context was defined as a dedicated solut
 * Since the Catalog at this point in development should only serve to display search results, we define it as a Domain Service.
 * To assist the Domain Service, we apply the Repository pattern to model a conceptual container of books.
 
-
-### API Documentation 
-Interactive API documentation is available via Swagger UI. You can explore all endpoints, parameters, request/response examples, and schemas at the link below:
-[View Swagger API Documentation](https://iandersonalmeida.github.io/book-purchasing-system/)
-
   
 ## Project Status
 The project is currently under development.
