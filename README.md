@@ -32,7 +32,7 @@ Currently, the system is focused on isolating and perfecting a single subdomain.
 Through strategic modeling, the Catalog Context was defined as a dedicated solution for the Catalog subdomain.
 
 * **Catalog Domain Model (UML):**  
-  ![Catalog UML Model](..docs/domain-model-for-catalog-context.PNG.png)
+  ![Catalog UML Model](docs/domain-model-for-catalog-context.PNG.png)
 
 * Within the Catalog Context, we have the concept of a Book as our domain object. This domain object must have a unique identity over time, even if there are changes in its state, as well as type safety; therefore, we treat this object as an Entity.
 * The unique identity of the Book entity ensures that one book can be distinguished from another. To avoid problems when the identity is used elsewhere, we define the identity as a BookId Value Object. Since Title and Author are currently just attributes to assist in book searches within this context, we can leave them as strings.
