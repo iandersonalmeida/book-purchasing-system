@@ -65,7 +65,7 @@ The codebase for the Catalog microservice is organized into four clear, function
 
 By enforcing this structure, the microservice achieves maximum testability—allowing core business rules to be tested with lightning-fast unit tests—and ensures that the service can evolve, scale, or change its database technology without affecting its core business definition.
 
-#### 🎨 Frontend Development
+#### Frontend Development
 The frontend adopts a component-driven approach built with **React** and **Next.js**, focused on creating the visual entry point for the system.
 
 ![Homepage Demo](docs/image-transition-updated.gif)
