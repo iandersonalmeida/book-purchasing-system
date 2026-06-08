@@ -29,7 +29,7 @@ This project embraces an **evolutionary and incremental architecture** driven by
 Currently, the system is focused on isolating and perfecting a single subdomain.
 
 ### Bounded Context: Catalog
-Following DDD's tactical design patterns, I have the following patterns: Entities, Value Objects, Aggregates, Repositories, and Domain Services. Applying these patterns, I have a elementary domain model:
+Following DDD's tactical design patterns, I have the following patterns: Entities, Value Objects, Aggregates, Repositories, and Domain Services. Applying these patterns, I have that elementary domain model:
 
 * **Catalog Domain Model (UML):**  
   ![Catalog UML Model](docs/domain-model-for-catalog-context.PNG)
@@ -39,6 +39,31 @@ Following DDD's tactical design patterns, I have the following patterns: Entitie
 * I also define Price as a Value Object to ensure that this object will always have a valid state and remain immutable.
 * Since the Catalog at this point in development should only serve to display search results, I define it as a Domain Service.
 * To assist the Domain Service, I apply the Repository pattern to model a conceptual container of books.
+
+## Incremental Development Lifecycle
+
+The application is built **incrementally, feature by feature, using vertical slicing**. For each development stage, the implementation flows naturally from the **Backend** (core business rules, database, and APIs) to the **Frontend** (UI construction and API consumption).
+
+### Stage 1: Catalog Context (Current Stage)
+Focuses on delivering the complete vertical slice of the catalog functionality based on the new DDD model.
+
+#### Backend Development
+In this project, the backend is developed under the **Microservices Architecture** pattern, where each service is built as a completely autonomous, loosely coupled, and self-contained component focused on a single business capability. 
+
+The Catalog backend is the first functional microservice implemented. To avoid architectural degradation and ensure that this service remains healthy and maintainable, its internal codebase is structured to isolate the core business rules from framework-specific details (such as Spring Boot or databases).
+
+##### Microservice Internal Structure
+The codebase for the Catalog microservice is organized into four clear, functional boundaries:
+
+* **`domain` :** This is the heart of the microservice, containing framework-free Java code. It holds the entities, aggregates, and value objects (like `Book`, `BookId`, and `Price`), domain services for stateless business logic, and the abstract repository interfaces (contracts) required by the domain.
+
+* **`presentation` :** Responsible for exposing the microservice to the external world. It contains the REST Controllers (e.g., `BookController` using `@RestController`) that receive incoming HTTP traffic, handle request parameters, and map exceptions into clean HTTP responses.
+
+* **`application` :** Acts as a thin coordination layer. It receives requests from the presentation layer, handles Data Transfer Objects (DTOs), uses mappers, and orchestrates the execution of the business logic defined within the domain.
+
+* **`infrastructure` :** Contains all the technical details and framework configurations that allow the microservice to run. This is where Spring Data JPA repositories, database drivers, and cloud configurations reside, fulfilling the data persistence contracts defined by the domain.
+
+By enforcing this structure, the microservice achieves maximum testability—allowing core business rules to be tested with lightning-fast unit tests—and ensures that the service can evolve, scale, or change its database technology without affecting its core business definition.
 
   
 ## Project Status
