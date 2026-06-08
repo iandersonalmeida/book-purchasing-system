@@ -65,6 +65,15 @@ The codebase for the Catalog microservice is organized into four clear, function
 
 By enforcing this structure, the microservice achieves maximum testability—allowing core business rules to be tested with lightning-fast unit tests—and ensures that the service can evolve, scale, or change its database technology without affecting its core business definition.
 
+#### 🎨 Frontend Development
+The frontend adopts a component-driven approach built with **React** and **Next.js**, focused on creating the visual entry point for the system.
+
+![Homepage Demo](docs/image-transition-updated.gif)
+
+* **Main Home Page (Active Core):** The primary landing page (`home`) is currently the only stable, fully implemented environment. It establishes the application's foundational layout, responsive grids, and core visual identity.
+
+* **Scope and Placeholders:** In alignment with our incremental lifecycle, other interactive UI elements—such as search inputs, buttons, and cross-page links—are currently present as architectural *placeholders*. They map out the future user experience but remain non-functional until their respective backend contexts and integrations are developed in future stages.  
+
   
 ## Project Status
 The project is currently under development.
