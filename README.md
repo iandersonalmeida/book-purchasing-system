@@ -69,15 +69,30 @@ By enforcing this structure, the microservice achieves maximum testability—all
 ## Project Status
 The project is currently under development.
 
-## Inspiration
-This project was inspired by the following books and official documentation sources:
+## Inspiration & References
 
-- Spring Microservices in Action
-- React in Action
-- Spring Framework Documentation
-- Spring Boot Documentation
-- React Documentation
-- Next.js Documentation
+This project’s architecture, design patterns, and implementation strategies were heavily inspired by the following software engineering books, official documentations, and architectural guides:
+
+### Books
+* **[Domain-Driven Design: Tackling Complexity in the Heart of Software](https://www.goodreads.com/book/show/179133.Domain_Driven_Design)** – *Eric Evans*
+  > Inspired the transition from a generic model to strategic boundaries and tactical patterns like Entities, Value Objects, and Domain Services within the Catalog microservice.
+* **[Implementing Domain-Driven Design](https://www.goodreads.com/book/show/15756814-implementing-domain-driven-design)** – *Vaughn Vernon*
+  > Provided the practical blueprint for structuring a healthy microservice with isolated, framework-free domain logic.
+* **Spring Microservices in Action** – *John Carnell & Illary Huaylupo Sánchez*
+  > Guided the conceptual framework for building, deploying, and managing scalable cloud-native microservices with Spring Boot.
+* **React in Action** – *Mark Tielens Thomas*
+  > Helped shape the mental model for building a dynamic, component-driven UI for the frontend development stages.
+
+### Documentation & Architectural Guides
+* **Microsoft Azure Architecture Center:**
+  * [Domain Analysis for Microservices](https://learn.microsoft.com/en-us/azure/architecture/microservices/model/domain-analysis) – *Conceptual reference for identifying Bounded Context boundaries.*
+  * [Tactical DDD for Microservices](https://learn.microsoft.com/en-us/azure/architecture/microservices/model/tactical-domain-driven-design) – *Guidance on applying tactical DDD patterns during microservices design.*
+* **Backend Stack:**
+  * [Spring Framework Documentation](https://docs.spring.io/spring-framework/reference/)
+  * [Spring Boot Documentation](https://docs.spring.io/spring-boot/index.html)
+* **Frontend Stack:**
+  * [React Documentation](https://react.dev/)
+  * [Next.js Documentation](https://nextjs.org/docs)
 
 
 
