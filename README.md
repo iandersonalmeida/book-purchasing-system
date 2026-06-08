@@ -4,10 +4,8 @@ This project aims to develop a web application that addresses microservices arch
 - [General info](#general-info)
 - [Technologies Used](#technologies-used)
 - [Project Management](#project-management)
-- [Overall Architecture](#overall-architecture)
-- [Application Domain Model](#application-domain-model)
-- [Backend Development](#backend-development)
-- [Frontend Development](#frontend-development)
+- [Domain-Driven Design (DDD) & Architecture](#domain-driven-design-ddd--architecture)
+- [Incremental Development Lifecycle](#incremental-development-lifecycle)
 - [Project Status](#project-status)
 - [Inspiration](#inspiration)
 
@@ -25,40 +23,27 @@ I manage the development of this project using **GitHub Projects** (Scrum style)
 
 [View Project Board](https://github.com/users/iandersonalmeida/projects/16)
 
-## Overall Architecture
-![](./docs/micro-service-arch-app.PNG)
+## Domain-Driven Design (DDD) & Architecture
+This project embraces an **evolutionary and incremental architecture** driven by Domain-Driven Design (DDD). Instead of defining a massive, rigid microservices structure upfront, the architecture emerges  as each **Bounded Context** is independently explored and developed.
 
-## Application Domain Model
-![](./docs/data-model.PNG)
+Currently, the system is focused on isolating and perfecting a single subdomain.
 
-## Backend Development
-Each microservice is built with Spring Boot and follows a clear separation of concerns.
+### Bounded Context: Catalog
+Through strategic modeling, the Catalog Context was defined as a dedicated solution for the Catalog subdomain.
+
+* **Catalog Domain Model (UML):**  
+  ![Catalog UML Model](docs/domain-model-for-catalog-context.PNG.png)
+
+* Within the Catalog Context, we have the concept of a Book as our domain object. This domain object must have a unique identity over time, even if there are changes in its state, as well as type safety; therefore, we treat this object as an Entity.
+* The unique identity of the Book entity ensures that one book can be distinguished from another. To avoid problems when the identity is used elsewhere, we define the identity as a BookId Value Object. Since Title and Author are currently just attributes to assist in book searches within this context, we can leave them as strings.
+* We also define Price as a Value Object to ensure that this object will always have a valid state and remain immutable.
+* Since the Catalog at this point in development should only serve to display search results, we define it as a Domain Service.
+* To assist the Domain Service, we apply the Repository pattern to model a conceptual container of books.
+
+
 ### API Documentation 
 Interactive API documentation is available via Swagger UI. You can explore all endpoints, parameters, request/response examples, and schemas at the link below:
 [View Swagger API Documentation](https://iandersonalmeida.github.io/book-purchasing-system/)
-### Book Service
-* Exposes endpoints to manage books
-* Uses Spring Data JPA for database access
-* Returns JSON responses through REST API
-###  Data Fetching Example
-This is a demonstration of a sample API request made using Postman.  
-It showcases an example of the communication between a MySQL database and a Spring Boot application that represents the Book Service and how I structure and test HTTP requests, handle headers and parameters, and inspect API responses — a key part of my backend and API testing workflow:
-![Postman Demo](./docs/postman-demo.gif.gif)
-
-## Frontend Development
-The frontend is being developed using Next.js, a React framework that enables server-side rendering and static site generation.
-
-### Homepage
-The frontend has been recently rebuilt to improve design and structure. Below is a representation of the current homepage developed with Next.js:
-![](./docs/homepage-1.PNG) 
-
-### Demo - Responsive Interface
-Here's a quick preview of the application running on different screen sizes:
-![Responsive Demo](./docs/responsive-design-sample.gif)
-
-### Image Transition Component
-I’ve implemented a component that performs smooth image transitions using Next.js, React, and TypeScript.
-![Image Transition](./docs/image-transition-updated.gif)
 
   
 ## Project Status
