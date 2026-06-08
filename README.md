@@ -82,6 +82,8 @@ This project’s architecture, design patterns, and implementation strategies we
   > Guided the conceptual framework for building, deploying, and managing scalable cloud-native microservices with Spring Boot.
 * **React in Action** – *Mark Tielens Thomas*
   > Helped shape the mental model for building a dynamic, component-driven UI for the frontend development stages.
+* **Microservices Patterns: With examples in Java** – *Chris Richardson*
+  > Influenced the architectural decision to decompose the system using DDD subdomains, guiding how independent Java services should be designed and interact.
 
 ### Documentation & Architectural Guides
 * **Microsoft Azure Architecture Center:**
