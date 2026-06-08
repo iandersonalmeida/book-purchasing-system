@@ -74,9 +74,9 @@ The project is currently under development.
 This project’s architecture, design patterns, and implementation strategies were heavily inspired by the following software engineering books, official documentations, and architectural guides:
 
 ### Books
-* **[Domain-Driven Design: Tackling Complexity in the Heart of Software](https://www.goodreads.com/book/show/179133.Domain_Driven_Design)** – *Eric Evans*
+* **Domain-Driven Design: Tackling Complexity in the Heart of Software** – *Eric Evans*
   > Inspired the transition from a generic model to strategic boundaries and tactical patterns like Entities, Value Objects, and Domain Services within the Catalog microservice.
-* **[Implementing Domain-Driven Design](https://www.goodreads.com/book/show/15756814-implementing-domain-driven-design)** – *Vaughn Vernon*
+* **Implementing Domain-Driven Design** – *Vaughn Vernon*
   > Provided the practical blueprint for structuring a healthy microservice with isolated, framework-free domain logic.
 * **Spring Microservices in Action** – *John Carnell & Illary Huaylupo Sánchez*
   > Guided the conceptual framework for building, deploying, and managing scalable cloud-native microservices with Spring Boot.
