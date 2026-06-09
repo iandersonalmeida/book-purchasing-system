@@ -32,7 +32,7 @@ Currently, the system is focused on isolating and perfecting a single subdomain.
 Following DDD's tactical design patterns, I have the following patterns: Entities, Value Objects, Aggregates, Repositories, and Domain Services. Applying these patterns, I have that elementary domain model:
 
 * **Catalog Domain Model (UML):**  
-  ![Catalog UML Model](docs/domain-model-for-catalog-context2.PNG)
+  ![Catalog UML Model](docs/domain-model-for-catalog-context3.PNG)
 
 * Within the Catalog Context, I have the concept of a Book as the domain object. This domain object must have a unique identity over time, even if there are changes in its state, as well as type safety; therefore I treat this object as an Entity.
 * The unique identity of the Book entity ensures that one book can be distinguished from another. To avoid problems when the identity is used elsewhere, I define the identity as a BookId Value Object. Since Title and Author are currently just attributes to assist in book searches within this context, we can leave them as strings.
