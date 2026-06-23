@@ -30,15 +30,18 @@ private static final Logger logger = LoggerFactory.getLogger(ISBN.class);
 	}
 	
 	//This test rejects the creation of an ISBN when the value is empty.
+	
+	
+	//This test rejects the creation of an ISBN when the value is blank
 	@Test
-	void shouldNotAllowEmptyISBN(){
-		
-		String value = "";	
+	void shouldNotAllowBlankISBN() {
+		String value = "\t  ";
 		
 		Exception isbnCreation = Assertions.assertThrows(IllegalArgumentException.class, ()-> new ISBN(value));
 		
-		Assertions.assertEquals("ISBN creation rejected. Value is empty.", isbnCreation.getMessage());
-		logger.info("ISBN creation rejected :"+isbnCreation);		
+		Assertions.assertEquals("ISBN creation rejected. Value is blank.", isbnCreation.getMessage());
+		logger.info("ISBN creation rejected :"+isbnCreation);
+		
 	}
 
 }

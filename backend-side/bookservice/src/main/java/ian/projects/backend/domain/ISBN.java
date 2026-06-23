@@ -9,10 +9,10 @@ public class ISBN {
 		this.value = value;
 		if(value == null) {
 			throw new IllegalArgumentException("ISBN creation rejected. Value is null.");
-		}
+		}		
 		
-		else if(value.equals("")) {
-			throw new IllegalArgumentException("ISBN creation rejected. Value is empty.");			
+		else if(value.isBlank()){
+			throw new IllegalArgumentException("ISBN creation rejected. Value is blank.");	
 		}
 	}
 
