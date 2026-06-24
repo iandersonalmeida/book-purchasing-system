@@ -29,9 +29,7 @@ private static final Logger logger = LoggerFactory.getLogger(ISBN.class);
 		
 	}
 	
-	//This test rejects the creation of an ISBN when the value is empty.
-	
-	
+		
 	//This test rejects the creation of an ISBN when the value is blank
 	@Test
 	void shouldNotAllowBlankISBN() {
@@ -42,6 +40,20 @@ private static final Logger logger = LoggerFactory.getLogger(ISBN.class);
 		Assertions.assertEquals("ISBN creation rejected. Value is blank.", isbnCreation.getMessage());
 		logger.info("ISBN creation rejected :"+isbnCreation);
 		
+	}
+	
+	//This test normalize ISBN when it contains hyphens
+	@Test
+	void shouldNormalizeISBN() {
+		//Given
+		String value = "978-0-13-235088-4";
+		
+		//When
+		ISBN isbn = new ISBN(value);
+		
+		//Then		
+		Assertions.assertEquals("9780132350884", isbn.getValue());	
+		logger.info("Normalized ISBN :"+isbn.getValue());
 	}
 
 }

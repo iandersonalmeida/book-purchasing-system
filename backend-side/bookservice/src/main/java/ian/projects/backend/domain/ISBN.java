@@ -4,17 +4,22 @@ package ian.projects.backend.domain;
 public class ISBN {
 	
 	private final String value;
+	private final String normalizedValue;
 
 	public ISBN(String value) {
 		this.value = value;
-		if(value == null) {
+		if(this.value == null) {
 			throw new IllegalArgumentException("ISBN creation rejected. Value is null.");
 		}		
 		
-		else if(value.isBlank()){
+		if(this.value.isBlank()){
 			throw new IllegalArgumentException("ISBN creation rejected. Value is blank.");	
 		}
+		
+		this.normalizedValue = value.replace("-","");		
 	}
-
-
+	
+	public String getValue() {
+		return normalizedValue;
+	}
 }
