@@ -62,4 +62,18 @@ public class ISBNTests {
 		logger.info("ISBN creation rejected :" + isbnCreation);
 	}
 
+	@Test
+	void shouldRejectISBNNotContaining10Or13Digits() {
+
+		// Given
+		String value = "123456789";
+
+		// When
+		Exception isbnCreation = Assertions.assertThrows(IllegalArgumentException.class, () -> new ISBN(value));
+
+		// Then
+		Assertions.assertEquals("ISBN creation rejected. ISBN muss contain exactly 10 or 13 digits.", isbnCreation.getMessage());
+		logger.info("ISBN creation rejected :" + isbnCreation);
+	}
+
 }
