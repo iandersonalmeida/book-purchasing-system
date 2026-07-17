@@ -14,8 +14,6 @@ public final class ISBN {
 	private final String normalizedValue;
 	private static final int ISBN_LENGTH_10 = 10;
 	private static final int ISBN_LENGTH_13 = 13;
-	public static final int DIVISOR = 10;
-	public static final int MINUEND = 10;
 
 	public ISBN(String value) {
 		this.value = value;
@@ -39,9 +37,7 @@ public final class ISBN {
 		if (normalizedValue.length() != ISBN_LENGTH_10 && normalizedValue.length() != ISBN_LENGTH_13) {
 			throw new IllegalArgumentException("ISBN creation rejected. ISBN muss contain exactly 10 or 13 digits.");
 		}
-
 		verifyCheckDigit();
-
 	}
 
 	public String getValue() {
@@ -50,73 +46,72 @@ public final class ISBN {
 
 	private void verifyCheckDigit() {
 
-		// Extract digit
+		int informedDigit = getInformedDigit();
+		int[] twelveDigits = getFirstTwelveDigits();
+		int digitsSum = multiplyDigitsByWeightsAndSumAllProducts(twelveDigits);
+		int checkDigit = calculateCheckDigit(digitsSum);
+		compareDigits(checkDigit, informedDigit);
+
+	}
+
+	private int getInformedDigit() {
 		String extractedDigit = normalizedValue.substring(12, 13);
-
-		// Convert to int
 		int enteredDigit = Integer.parseInt(extractedDigit);
+		return enteredDigit;
+	}
 
-		String first12Digits = normalizedValue.substring(0, 12);
-		//System.out.println("First 12 digits: " + first12Digits);
-		
-		//Convert to int
-		int[] digits = first12Digits.chars().map(Character::getNumericValue).toArray();
-		//System.out.println("Digits: " + Arrays.toString(digits));
-		
-		//Extract the values ​​of the even indices
-		int[] evenIndices = IntStream.range(0, digits.length).filter(i -> i % 2 == 0).map(i -> digits[i]).toArray();
-		//System.out.println("Even Indices Values: " + Arrays.toString(evenIndices));
-		
-		//Extract the values ​​of the odd indices
-		int[] oddIndices = IntStream.range(0, digits.length).filter(i -> i % 2 != 0).map(i -> digits[i]).toArray();
-		//System.out.println("Odd Indices Values: " + Arrays.toString(oddIndices));
+	private int[] getFirstTwelveDigits() {
+		String firstTwelveDigits = normalizedValue.substring(0, 12);
+		int[] twelveDigits = firstTwelveDigits.chars().map(Character::getNumericValue).toArray();
+		return twelveDigits;
+	}
 
-		// Computed values of even indices
+	private int multiplyDigitsByWeightsAndSumAllProducts(int[] twelveDigits) {
+
+		int[] evenIndices = IntStream.range(0, twelveDigits.length).filter(i -> i % 2 == 0).map(i -> twelveDigits[i])
+				.toArray();
+
+		int[] oddIndices = IntStream.range(0, twelveDigits.length).filter(i -> i % 2 != 0).map(i -> twelveDigits[i])
+				.toArray();
+
 		int[] evenIndexedDigits = new int[6];
 		for (int i = 0; i < evenIndices.length; i++) {
 			evenIndexedDigits[i] = evenIndices[i] * 1;
-			//String computedEvenvalues = Arrays.toString(evenIndexedDigits);
-			//System.out.println("Computed values of even indices: " + computedEvenvalues);
+
 		}
 
-		// Computed values of odd indices
 		int[] oddIndexedDigits = new int[6];
 		for (int i = 0; i < oddIndices.length; i++) {
 			oddIndexedDigits[i] = oddIndices[i] * 3;
-			//String computedOddvalues = Arrays.toString(oddIndexedDigits);
-			//System.out.println("Computed values of odd indices: " + computedOddvalues);
+
 		}
 
-		// Sum of digits
 		int digitsSum = 0;
 		for (int i = 0; i < evenIndexedDigits.length; i++) {
 			digitsSum += evenIndexedDigits[i] + oddIndexedDigits[i];
 		}
 
-		System.out.println("Result: " + digitsSum);
+		return digitsSum;
+	}
 
-		// Divide sum of digits by 10
+	private int calculateCheckDigit(int digitsSum) {
+		final int DIVISOR = 10;
+		final int MINUEND = 10;
 		int remainder = digitsSum % DIVISOR;
-		System.out.println("remainder: " +remainder);
-
-		// Take the remainder and subtract it from 10 to obtain the check digit.
 		int checkDigit = MINUEND - remainder;
-		System.out.println("Check Digit: " + checkDigit);
-		System.out.println("Entered Digit: " + enteredDigit);
-		
-		//special case if check digit is 10
-		if(checkDigit == 10) {
-			checkDigit = 0;
-			System.out.println("Check digit changed from 10 to 0. Check digit = " +checkDigit);
+		return checkDigit;
+	}
+
+	private void compareDigits(int checkDigit, int informedDigit) {
+		// According to the ISBN-13 specification, a calculated value of 10 is represented by check digit 0.
+		if (checkDigit == 10) {
+			checkDigit = 0;			
 		}
-		
-		
 
-		if (checkDigit != enteredDigit) {
+		if (checkDigit != informedDigit) {
 			throw new IllegalArgumentException("ISBN creation rejected. Invalid Digit.");
-		}	
-		
-		System.out.println("ISBN created successfully.");
+		}
 
+		System.out.println("ISBN created successfully.");
 	}
 }
