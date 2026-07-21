@@ -35,7 +35,7 @@ public final class ISBN {
 		}
 
 		if (normalizedValue.length() != ISBN_LENGTH_10 && normalizedValue.length() != ISBN_LENGTH_13) {
-			throw new IllegalArgumentException("ISBN creation rejected. ISBN muss contain exactly 10 or 13 digits.");
+			throw new IllegalArgumentException("ISBN creation rejected. ISBN must contain exactly 10 or 13 digits.");
 		}
 		verifyCheckDigit();
 	}

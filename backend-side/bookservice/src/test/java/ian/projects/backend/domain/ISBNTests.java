@@ -57,6 +57,7 @@ public class ISBNTests {
 		Exception isbnCreation = Assertions.assertThrows(IllegalArgumentException.class, () -> new ISBN(value));
 		// Then
 		Assertions.assertEquals("ISBN creation rejected. ISBN must contain only digits.", isbnCreation.getMessage());
+
 	}
 
 	@Test
@@ -70,6 +71,7 @@ public class ISBNTests {
 		// Then
 		Assertions.assertEquals("ISBN creation rejected. ISBN must contain exactly 10 or 13 digits.",
 				isbnCreation.getMessage());
+
 	}
 
 	@Test
