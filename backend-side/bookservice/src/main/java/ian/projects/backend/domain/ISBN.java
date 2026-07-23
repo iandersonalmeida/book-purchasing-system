@@ -1,6 +1,5 @@
 package ian.projects.backend.domain;
 
-import java.util.Arrays;
 import java.util.stream.IntStream;
 
 /**
@@ -18,43 +17,80 @@ public final class ISBN {
 	public ISBN(String value) {
 		this.value = value;
 
+		validateNull();
+
+		validateBlank();
+
+		// Hyphens are accepted as input but are not part of the ISBN identity.
+		this.normalizedValue = normalize();
+
+		validateLength();
+
+		if (normalizedValue.length() == ISBN_LENGTH_13) {
+			validateISBN13();
+			verifyCheckDigitForISBN13();
+		}
+
+		else {
+			validateISBN10();
+			verifyCheckDigitForISBN10();
+		}
+
+	}
+
+	private void validateNull() {
 		if (this.value == null) {
 			throw new IllegalArgumentException("ISBN creation rejected. Value is null.");
 		}
+	}
 
+	private void validateBlank() {
 		if (this.value.isBlank()) {
 			throw new IllegalArgumentException("ISBN creation rejected. Value is blank.");
 		}
+	}
 
-		// Hyphens are accepted as input but are not part of the ISBN identity.
-		this.normalizedValue = value.replace("-", "");
+	private String normalize() {
+		String normalizedValue = value.replace("-", "");
+		return normalizedValue;
+	}
 
-		// After normalization, an ISBN must contain only digit characters.
+	private void validateLength() {
+		if (normalizedValue.length() != ISBN_LENGTH_13 && normalizedValue.length() != ISBN_LENGTH_10) {
+			throw new IllegalArgumentException(
+					"ISBN creation rejected. ISBN must be either a valid ISBN-10 or ISBN-13.");
+		}
+
+	}
+
+	private void validateISBN13() {
 		if (!normalizedValue.matches("[0-9]+")) {
-			throw new IllegalArgumentException("ISBN creation rejected. ISBN must contain only digits.");
+			throw new IllegalArgumentException("ISBN creation rejected. ISBN must contain digits.");
 		}
+	}
 
-		if (normalizedValue.length() != ISBN_LENGTH_10 && normalizedValue.length() != ISBN_LENGTH_13) {
-			throw new IllegalArgumentException("ISBN creation rejected. ISBN must contain exactly 10 or 13 digits.");
+	private void validateISBN10() {
+		if (!normalizedValue.matches("^[0-9]{9}[0-9xX]$")) {
+			throw new IllegalArgumentException(
+					"ISBN creation rejected. ISBN must contain 9 digits followed by a digit or X.");
 		}
-		verifyCheckDigit();
 	}
 
 	public String getValue() {
 		return normalizedValue;
 	}
 
-	private void verifyCheckDigit() {
+	private void verifyCheckDigitForISBN13() {
 
-		int informedDigit = getInformedDigit();
+		int informedDigit = getInformedDigitFromISBN13();
 		int[] twelveDigits = getFirstTwelveDigits();
-		int digitsSum = multiplyDigitsByWeightsAndSumAllProducts(twelveDigits);
-		int checkDigit = calculateCheckDigit(digitsSum);
-		compareDigits(checkDigit, informedDigit);
+		int weightedSum = calculateISBN13WeightedSum(twelveDigits);
+		int checkDigit = calculateCheckDigitISBN13(weightedSum);
+		compareDigitsForISBN13(checkDigit, informedDigit);
 
 	}
 
-	private int getInformedDigit() {
+	private int getInformedDigitFromISBN13() {
 		String extractedDigit = normalizedValue.substring(12, 13);
 		int enteredDigit = Integer.parseInt(extractedDigit);
 		return enteredDigit;
@@ -66,35 +102,22 @@ public final class ISBN {
 		return twelveDigits;
 	}
 
-	private int multiplyDigitsByWeightsAndSumAllProducts(int[] twelveDigits) {
+	private int calculateISBN13WeightedSum(int[] twelveDigits) {
 
-		int[] evenIndices = IntStream.range(0, twelveDigits.length).filter(i -> i % 2 == 0).map(i -> twelveDigits[i])
-				.toArray();
+		int weightedSum = 0;
+		for (int i = 0; i < twelveDigits.length; i++) {
 
-		int[] oddIndices = IntStream.range(0, twelveDigits.length).filter(i -> i % 2 != 0).map(i -> twelveDigits[i])
-				.toArray();
-
-		int[] evenIndexedDigits = new int[6];
-		for (int i = 0; i < evenIndices.length; i++) {
-			evenIndexedDigits[i] = evenIndices[i] * 1;
-
+			if (i % 2 != 0) {
+				weightedSum += twelveDigits[i] * 3;
+			}
+			else {
+				weightedSum += twelveDigits[i] * 1;
+			}
 		}
-
-		int[] oddIndexedDigits = new int[6];
-		for (int i = 0; i < oddIndices.length; i++) {
-			oddIndexedDigits[i] = oddIndices[i] * 3;
-
-		}
-
-		int digitsSum = 0;
-		for (int i = 0; i < evenIndexedDigits.length; i++) {
-			digitsSum += evenIndexedDigits[i] + oddIndexedDigits[i];
-		}
-
-		return digitsSum;
+		return weightedSum;
 	}
 
-	private int calculateCheckDigit(int digitsSum) {
+	private int calculateCheckDigitISBN13(int digitsSum) {
 		final int DIVISOR = 10;
 		final int MINUEND = 10;
 		int remainder = digitsSum % DIVISOR;
@@ -102,16 +125,68 @@ public final class ISBN {
 		return checkDigit;
 	}
 
-	private void compareDigits(int checkDigit, int informedDigit) {
-		// According to the ISBN-13 specification, a calculated value of 10 is represented by check digit 0.
+	private void compareDigitsForISBN13(int checkDigit, int informedDigit) {
+		// According to the ISBN-13 specification, a calculated value of 10 is
+		// represented by check digit 0.
 		if (checkDigit == 10) {
-			checkDigit = 0;			
+			checkDigit = 0;
 		}
 
 		if (checkDigit != informedDigit) {
-			throw new IllegalArgumentException("ISBN creation rejected. Invalid Digit.");
+			throw new IllegalArgumentException("ISBN-13 creation rejected. Invalid Check Digit.");
 		}
+	}
 
-		System.out.println("ISBN created successfully.");
+	// ISBN-10...............................................................................................
+	private void verifyCheckDigitForISBN10() {
+		int informedDigit = getInformedDigitFromISBN10();
+		int[] nineDigits = getFirstNineDigits();
+		int weightedSum = calculateISBN10WeightedSum(nineDigits);
+		int checkDigit = calculateCheckDigitISBN10(weightedSum);
+		compareDigitsForISBN10(checkDigit, informedDigit);
+
+	}
+
+	private int getInformedDigitFromISBN10() {
+
+		String extractedDigit = normalizedValue.substring(9, 10);
+		if (extractedDigit.equalsIgnoreCase("X")) {
+			return 10;
+		}
+		return Integer.parseInt(extractedDigit);
+	}
+
+	private int[] getFirstNineDigits() {
+		String firstNineDigits = normalizedValue.substring(0, 9);
+		int[] nineDigits = firstNineDigits.chars().map(Character::getNumericValue).toArray();
+		return nineDigits;
+	}
+
+	private int calculateISBN10WeightedSum(int[] nineDigits) {
+
+		int weightedSum = 0;
+		int n = 10;
+		for (int i = 0; i < nineDigits.length; i++) {
+			weightedSum += nineDigits[i] * n;
+			n--;
+		}
+		return weightedSum;
+	}
+
+	private int calculateCheckDigitISBN10(int digitsSum) {
+		final int DIVISOR = 11;
+		int remainder = digitsSum % DIVISOR;
+		int checkDigit = 11 - remainder;
+		return checkDigit;
+	}
+
+	private void compareDigitsForISBN10(int checkDigit, int informedDigit) {
+
+		if (checkDigit == 11) {
+			checkDigit = 0;
+		}
+		if (checkDigit != informedDigit) {
+			throw new IllegalArgumentException("ISBN-10 creation rejected. Invalid Check Digit.");
+		}
 	}
 }

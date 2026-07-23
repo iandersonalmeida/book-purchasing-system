@@ -9,7 +9,7 @@ import org.junit.jupiter.api.Test;
 
 public class ISBNTests {
 
-	//private static final Logger logger = LoggerFactory.getLogger(ISBN.class);
+	// private static final Logger logger = LoggerFactory.getLogger(ISBN.class);
 
 	@Test
 	@DisplayName("Should reject null value")
@@ -56,39 +56,39 @@ public class ISBNTests {
 		// When
 		Exception isbnCreation = Assertions.assertThrows(IllegalArgumentException.class, () -> new ISBN(value));
 		// Then
-		Assertions.assertEquals("ISBN creation rejected. ISBN must contain only digits.", isbnCreation.getMessage());
+		Assertions.assertEquals("ISBN creation rejected. ISBN must contain digits.",
+				isbnCreation.getMessage());
 
 	}
 
 	@Test
-	@DisplayName("Should reject ISBN not containing 10 or 13 digits")
-	void shouldRejectISBNNotContaining10Or13Digits() {
+	@DisplayName("Should reject ISBN not containing 13 or 10 digits")
+	void shouldRejectISBNNotContaining13or10Digits() {
 
 		// Given
 		String value = "123456789";
 		// When
 		Exception isbnCreation = Assertions.assertThrows(IllegalArgumentException.class, () -> new ISBN(value));
 		// Then
-		Assertions.assertEquals("ISBN creation rejected. ISBN must contain exactly 10 or 13 digits.",
+		Assertions.assertEquals("ISBN creation rejected. ISBN must be either a valid ISBN-10 or ISBN-13.",
 				isbnCreation.getMessage());
-
 	}
 
 	@Test
-	@DisplayName("Should verify invalid check digit")
-	void shouldVerifyInvalidCheckDigit() {
+	@DisplayName("Should verify invalid check digit for ISBN 13")
+	void shouldVerifyInvalidCheckDigitForISBN13() {
 
 		// Given
 		String invalidValue = "9780132350885";
 		// When
 		Exception isbnCreation = Assertions.assertThrows(IllegalArgumentException.class, () -> new ISBN(invalidValue));
 		// Then
-		Assertions.assertEquals("ISBN creation rejected. Invalid Digit.", isbnCreation.getMessage());
+		Assertions.assertEquals("ISBN-13 creation rejected. Invalid Check Digit.", isbnCreation.getMessage());
 	}
 
 	@Test
-	@DisplayName("Should verify valid check digit")
-	void shouldVerifyValidCheckDigit() {
+	@DisplayName("Should verify valid check digit for ISBN 13")
+	void shouldVerifyValidCheckDigitForISBN13() {
 
 		// Given
 		String validValue = "9780132350884";
@@ -108,6 +108,51 @@ public class ISBNTests {
 		ISBN isbn = new ISBN(value);
 		// Then
 		Assertions.assertEquals("9780201633610", isbn.getValue());
+	}
+
+	@Test
+	@DisplayName("Should create ISBN 10 with valid check digit")
+	void shouldCreateISBN10WithValidCheckDigit() {
+
+		// Given
+		String value = "0-13-110362-8";
+
+		// When
+		ISBN isbn = new ISBN(value);
+
+		// Then
+		Assertions.assertEquals("0131103628", isbn.getValue());
+
+	}
+
+	@Test
+	@DisplayName("Should reject ISBN 10 with invalid check digit")
+	void shouldRejectISBN10WithInvalidCheckDigit() {
+
+		// Given
+		String value = "0-13-110362-7";
+
+		// When
+		Exception isbnCreation = Assertions.assertThrows(IllegalArgumentException.class, () -> new ISBN(value));
+		// ISBN isbn = new ISBN(value);
+
+		// Then
+		Assertions.assertEquals("ISBN-10 creation rejected. Invalid Check Digit.", isbnCreation.getMessage());
+		// Assertions.assertEquals("0131103628", isbn.getValue());
+	}
+
+	@Test
+	@DisplayName("Should create ISBN 10 with check digit X")
+	void shouldCreateISBN10WithCheckDigitX() {
+
+		// Given
+		String value = "0-8044-2957-X";
+
+		// When
+		ISBN isbn = new ISBN(value);
+
+		// Then
+		Assertions.assertEquals("080442957X", isbn.getValue());
 	}
 
 }
