@@ -55,7 +55,7 @@ The Catalog backend is the first functional microservice implemented. To avoid a
 ##### Microservice Internal Structure
 The codebase for the Catalog microservice is organized into four clear, functional boundaries:
 
-* **`domain` :** This is the heart of the microservice, containing framework-free Java code. It holds the entities, aggregates, and value objects (like `Book`, `BookId`, and `Price`), domain services for stateless business logic, and the abstract repository interfaces (contracts) required by the domain.
+* **`domain` :** This is the heart of the microservice, containing framework-free Java code. It holds the entities, aggregates, and value objects (like `Book`, `ISBN`, and `Price`), domain services for stateless business logic, and the abstract repository interfaces (contracts) required by the domain.
 
 * **`presentation` :** Responsible for exposing the microservice to the external world. It contains the REST Controllers (e.g., `BookController` using `@RestController`) that receive incoming HTTP traffic, handle request parameters, and map exceptions into clean HTTP responses.
 
