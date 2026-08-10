@@ -35,7 +35,7 @@ Following DDD's tactical design patterns, I have the following patterns: Entitie
   ![Catalog UML Model](docs/domain-model-for-catalog-context5.PNG)
 
 * Within the Catalog Context, I have the concept of a Book as the domain object. This domain object must have a unique identity over time, even if there are changes in its state, as well as type safety; therefore I treat this object as an Entity.
-* The unique identity of the Book entity ensures that one book can be distinguished from another. To avoid problems when the identity is used elsewhere, I define the identity as a BookId Value Object. Since Title and Author are currently just attributes to assist in book searches within this context, we can leave them as strings.
+* The unique identity of the Book entity ensures that one book can be distinguished from another. To avoid problems when the identity is used elsewhere, I define the identity as a ISBN Value Object. Since Title and Author are currently just attributes to assist in book searches within this context, we can leave them as strings.
 * I also define Price as a Value Object to ensure that this object will always have a valid state and remain immutable.
 * Since the Catalog at this point in development should only serve to display search results, I define it as a Domain Service.
 * To assist the Domain Service, I apply the Repository pattern to model a conceptual container of books.
