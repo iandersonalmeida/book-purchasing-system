@@ -56,11 +56,9 @@ public final class Price {
 		}
 	}
 
-	private BigDecimal normalizePrice(BigDecimal value) {
+	private BigDecimal normalizePrice(BigDecimal value) {		
 		
-		System.out.println("Amount before: " + value);
 		BigDecimal amount = value.setScale(2, RoundingMode.UNNECESSARY );
-		System.out.println("Amount after: " + amount);
 
 		return amount;
 	}
