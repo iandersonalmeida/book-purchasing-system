@@ -1,6 +1,7 @@
 package ian.projects.backend.domain;
 
 import java.math.BigDecimal;
+import java.math.RoundingMode;
 import java.util.Currency;
 
 /**
@@ -14,28 +15,59 @@ public final class Price {
 	private final Currency currency;
 
 	public Price(BigDecimal amount, Currency currency) {
-		this.amount = amount;
+
+		validatePriceIsBiggerThanZero(amount);
+
+		validateCurrency(currency);
+
+		validateNumberOfDecimalPlaces(amount);
+
+		this.amount = normalizePrice(amount);
+
 		this.currency = currency;
 
-		// invariant 1
-		validatePriceIsBiggerThanZero();
-		
-		// invariant 2
-		validateCurrency();
+		// stateOfTheObject();
 	}
 
-	private void validatePriceIsBiggerThanZero() {
+	public BigDecimal getAmount() {
+		return amount;
+	}
+
+	private void validatePriceIsBiggerThanZero(BigDecimal amount) {
 
 		if (amount.compareTo(BigDecimal.ZERO) <= 0) {
 			throw new IllegalArgumentException("Price is not bigger than zero.");
 		}
 	}
-	
-	private void validateCurrency() {
-		
-		if(currency == null) {
+
+	private void validateCurrency(Currency currency) {
+
+		if (currency == null) {
 			throw new IllegalArgumentException("Price should have a Currency.");
 		}
 	}
+
+	private void validateNumberOfDecimalPlaces(BigDecimal amount) {
+
+		int numberOfDecimalPlaces = amount.scale();
+
+		if (numberOfDecimalPlaces > 2) {
+			throw new IllegalArgumentException("Price can not have more than two decimal places.");
+		}
+	}
+
+	private BigDecimal normalizePrice(BigDecimal value) {
+		
+		System.out.println("Amount before: " + value);
+		BigDecimal amount = value.setScale(2, RoundingMode.UNNECESSARY );
+		System.out.println("Amount after: " + amount);
+
+		return amount;
+	}
+
+	/*
+	 * private void stateOfTheObject() { System.out.println("Amount: "+amount);
+	 * System.out.println("Currency: "+currency); }
+	 */
 
 }
