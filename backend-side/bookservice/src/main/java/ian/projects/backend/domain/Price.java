@@ -3,6 +3,7 @@ package ian.projects.backend.domain;
 import java.math.BigDecimal;
 import java.math.RoundingMode;
 import java.util.Currency;
+import java.util.Objects;
 
 /**
  * Represents the Price of a book.
@@ -26,11 +27,15 @@ public final class Price {
 
 		this.currency = currency;
 
-		// stateOfTheObject();
+		//stateOfTheObject();
 	}
 
 	public BigDecimal getAmount() {
 		return amount;
+	}
+
+	public Currency getCurrency() {
+		return currency;
 	}
 
 	private void validatePriceIsBiggerThanZero(BigDecimal amount) {
@@ -56,16 +61,36 @@ public final class Price {
 		}
 	}
 
-	private BigDecimal normalizePrice(BigDecimal value) {		
-		
-		BigDecimal amount = value.setScale(2, RoundingMode.UNNECESSARY );
+	private BigDecimal normalizePrice(BigDecimal value) {
+
+		BigDecimal amount = value.setScale(2, RoundingMode.UNNECESSARY);
 
 		return amount;
 	}
 
+	@Override
+	public int hashCode() {
+		return Objects.hash(amount, currency);
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Price other = (Price) obj;
+		return Objects.equals(amount, other.amount) && Objects.equals(currency, other.currency);
+	}
+	
+	
+
 	/*
-	 * private void stateOfTheObject() { System.out.println("Amount: "+amount);
-	 * System.out.println("Currency: "+currency); }
-	 */
+	private void stateOfTheObject() {
+		System.out.println("Amount: " + amount +" "+currency);
+	}
+	*/
 
 }
