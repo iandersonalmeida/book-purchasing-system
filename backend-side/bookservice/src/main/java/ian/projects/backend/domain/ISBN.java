@@ -1,5 +1,6 @@
 package ian.projects.backend.domain;
 
+import java.util.Objects;
 import java.util.stream.IntStream;
 
 /**
@@ -189,4 +190,23 @@ public final class ISBN {
 			throw new IllegalArgumentException("ISBN-10 creation rejected. Invalid Check Digit.");
 		}
 	}
+
+	@Override
+	public int hashCode() {
+		return Objects.hash(normalizedValue);
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		ISBN other = (ISBN) obj;
+		return Objects.equals(normalizedValue, other.normalizedValue);
+	}
+	
+	
 }

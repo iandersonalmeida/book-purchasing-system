@@ -1,5 +1,7 @@
 package ian.projects.backend.domain;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
+
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -153,6 +155,22 @@ public class ISBNTests {
 
 		// Then
 		Assertions.assertEquals("080442957X", isbn.getValue());
+	}
+	
+	@Test
+	void shouldConsiderISBNsWithTheSameValueEqual() {
+		
+		//Given
+		String value1 = "978-0-596-52068-7";
+		String value2 = "978-0-596-52068-7";
+		
+		//When
+		ISBN isbnA = new ISBN(value1);
+		ISBN isbnB = new ISBN(value2);
+		
+		//Then
+		assertEquals(isbnA, isbnB);
+		
 	}
 
 }
