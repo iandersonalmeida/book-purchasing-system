@@ -34,11 +34,19 @@ Following DDD's tactical design patterns, I have the following patterns: Entitie
 * **Catalog Domain Model (UML):**  
   ![Catalog UML Model](docs/domain-model-for-catalog-context6.PNG)
 
-* Within the Catalog Context, I have the concept of a Book as the domain object. This domain object must have a unique identity over time, even if there are changes in its state, as well as type safety; therefore I treat this object as an Entity.
-* The unique identity of the Book entity ensures that one book can be distinguished from another. To avoid problems when the identity is used elsewhere, I define the identity as a ISBN Value Object. Since Title and Author are currently just attributes to assist in book searches within this context, we can leave them as strings.
-* I also define Price as a Value Object to ensure that this object will always have a valid state and remain immutable.
-* Since the Catalog at this point in development should only serve to display search results, I define it as a Domain Service.
-* To assist the Domain Service, I apply the Repository pattern to model a conceptual container of books.
+* Within the Catalog Context, I have the concept of a Book as a domain object. This object must have a unique identity over time, even when its state changes, as well as type safety; therefore, I treat Book as an Entity.
+
+* The unique identity of the Book Entity allows one book to be distinguished from another. To avoid problems when this identity is used elsewhere, I represent the identity as an ISBN Value Object. Since Title and Author are currently only attributes used to support book searches within this context, they can remain strings.
+
+* I also represent Price as a Value Object to ensure that it always maintains a valid state and remains immutable.
+
+* The Book Entities are maintained together as a single Aggregate within the Catalog. The Aggregate is treated as a unit for data changes and is responsible for maintaining the consistency rules that apply to the Books within its boundaries.
+
+* Because a single Aggregate must have one Root, one object is responsible for controlling external access to the Aggregate and for protecting its consistency. The Catalog is therefore treated as the Aggregate Root that contains the registered Book Entities.
+
+* At this point in the domain, there is a single Catalog. When a Book is registered, it is added to the existing Catalog Aggregate. The Catalog knows the state of the Book Entities within its boundary and can therefore enforce the rule that two Books cannot be registered with the same ISBN.
+
+* To provide access to the Aggregate, I apply the Repository pattern. The Repository represents the conceptual collection of the Aggregate Root while encapsulating the actual storage mechanism. Persistence in a database is an implementation detail and is not part of the domain model.
 
 ## Incremental Development Lifecycle
 
