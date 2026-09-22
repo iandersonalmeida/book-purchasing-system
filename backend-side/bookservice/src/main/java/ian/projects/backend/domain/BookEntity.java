@@ -1,5 +1,6 @@
 package ian.projects.backend.domain;
 
+import java.math.BigDecimal;
 import java.util.Objects;
 
 //This class represents an Entity.
@@ -48,7 +49,8 @@ public class BookEntity {
 		}
 
 	}
-
+		
+				
 	@Override
 	public int hashCode() {
 		return Objects.hash(isbn);

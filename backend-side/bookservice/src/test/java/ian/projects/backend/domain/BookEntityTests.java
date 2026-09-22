@@ -99,7 +99,7 @@ public class BookEntityTests {
 		Price priceA = new Price(amountA, currencyA);
 		String authorA = "Eric Evans";
 		String titleA = "Domain-Driven Design";
-		
+
 		// Given Entity B
 		String valueB = "978-0-596-52068-7";
 		ISBN isbnB = new ISBN(valueB);
@@ -108,15 +108,15 @@ public class BookEntityTests {
 		Price priceB = new Price(amountB, currencyB);
 		String authorB = "Eric Evans";
 		String titleB = "Domain-Driven Design";
-		
-		//When
+
+		// When
 		BookEntity bookEntityA = new BookEntity(isbnA, titleA, authorA, priceA);
 		BookEntity bookEntityB = new BookEntity(isbnB, titleB, authorB, priceB);
-		
-		//Then
+
+		// Then
 		assertEquals(bookEntityA, bookEntityB);
 	}
-	
+
 	@Test
 	void shouldTestIfTwoBooksWithSameISBNAndDifferentStateAreEqual() {
 
@@ -128,7 +128,7 @@ public class BookEntityTests {
 		Price priceA = new Price(amountA, currencyA);
 		String authorA = "Eric Evans";
 		String titleA = "Domain-Driven Design";
-		
+
 		// Given Entity B
 		String valueB = "978-0-596-52068-7";
 		ISBN isbnB = new ISBN(valueB);
@@ -137,15 +137,15 @@ public class BookEntityTests {
 		Price priceB = new Price(amountB, currencyB);
 		String authorB = "Eric Evans";
 		String titleB = "Domain-Driven Design";
-		
-		//When
+
+		// When
 		BookEntity bookEntityA = new BookEntity(isbnA, titleA, authorA, priceA);
 		BookEntity bookEntityB = new BookEntity(isbnB, titleB, authorB, priceB);
-		
-		//Then
+
+		// Then
 		assertEquals(bookEntityA, bookEntityB);
 	}
-	
+
 	@Test
 	void shouldTestIfTwoBooksWithDifferentISBNAreDifferent() {
 
@@ -157,7 +157,7 @@ public class BookEntityTests {
 		Price priceA = new Price(amountA, currencyA);
 		String authorA = "Eric Evans";
 		String titleA = "Domain-Driven Design";
-		
+
 		// Given Entity B
 		String valueB = "978-0-321-12521-7";
 		ISBN isbnB = new ISBN(valueB);
@@ -166,19 +166,19 @@ public class BookEntityTests {
 		Price priceB = new Price(amountB, currencyB);
 		String authorB = "Eric Evans";
 		String titleB = "Domain-Driven Design";
-		
-		//When
+
+		// When
 		BookEntity bookEntityA = new BookEntity(isbnA, titleA, authorA, priceA);
 		BookEntity bookEntityB = new BookEntity(isbnB, titleB, authorB, priceB);
-		
-		//Then
+
+		// Then
 		assertNotEquals(bookEntityA, bookEntityB);
 	}
-	
+
 	@Test
 	void shouldTestIfTwoBooksEqualHaveTheSameHashCode() {
-		
-		//Given Entity A
+
+		// Given Entity A
 		String valueA = "978-0-596-52068-7";
 		ISBN isbnA = new ISBN(valueA);
 		BigDecimal amountA = new BigDecimal("10.00");
@@ -186,7 +186,7 @@ public class BookEntityTests {
 		Price priceA = new Price(amountA, currencyA);
 		String authorA = "Eric Evans";
 		String titleA = "Domain-Driven Design";
-		
+
 		// Given Entity B
 		String valueB = "978-0-596-52068-7";
 		ISBN isbnB = new ISBN(valueB);
@@ -195,15 +195,13 @@ public class BookEntityTests {
 		Price priceB = new Price(amountB, currencyB);
 		String authorB = "Eric Evans";
 		String titleB = "Domain-Driven Design";
-		
-		//When
+
+		// When
 		BookEntity bookEntityA = new BookEntity(isbnA, titleA, authorA, priceA);
 		BookEntity bookEntityB = new BookEntity(isbnB, titleB, authorB, priceB);
-		
-		//Then
+
+		// Then
 		assertEquals(bookEntityA.hashCode(), bookEntityB.hashCode());
-		
-		
 	}
 
 }
