@@ -6,6 +6,8 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
+import ian.projects.catalogservice.domain.ISBN;
+
 //import org.slf4j.LoggerFactory;
 //import org.slf4j.Logger;
 

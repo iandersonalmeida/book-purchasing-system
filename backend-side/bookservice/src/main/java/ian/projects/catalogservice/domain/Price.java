@@ -1,4 +1,4 @@
-package ian.projects.backend.domain;
+package ian.projects.catalogservice.domain;
 
 import java.math.BigDecimal;
 import java.math.RoundingMode;

@@ -9,6 +9,8 @@ import java.util.Currency;
 
 import org.junit.jupiter.api.Test;
 
+import ian.projects.catalogservice.domain.Price;
+
 public class PriceTests {
 
 	@Test

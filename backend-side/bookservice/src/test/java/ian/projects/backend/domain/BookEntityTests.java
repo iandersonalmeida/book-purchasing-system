@@ -9,6 +9,10 @@ import java.util.Currency;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
+import ian.projects.catalogservice.domain.BookEntity;
+import ian.projects.catalogservice.domain.ISBN;
+import ian.projects.catalogservice.domain.Price;
+
 public class BookEntityTests {
 
 	@Test

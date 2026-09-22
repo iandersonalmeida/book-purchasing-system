@@ -1,4 +1,4 @@
-package ian.projects.backend.domain;
+package ian.projects.catalogservice.domain;
 
 import java.util.Objects;
 import java.util.stream.IntStream;
